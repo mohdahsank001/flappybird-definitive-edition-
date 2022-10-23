@@ -23,7 +23,6 @@ definitive edition of the classic flappy bird game developed by team065 at unime
 <br>
 <img width="1466" alt="image" src="https://user-images.githubusercontent.com/67852641/197109439-0fb3507a-6bd3-4265-963f-090e7c24bd70.png">
 
-<br>
-![image](https://user-images.githubusercontent.com/67852641/197379647-ba0ca1a2-e785-43e5-b1cc-2c06352d9095.png)
+[image](https://user-images.githubusercontent.com/67852641/197379660-f8ae49a3-1828-4b51-a81c-648ceb4c096f.png)
 
 
