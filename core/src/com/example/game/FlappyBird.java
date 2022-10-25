@@ -36,7 +36,7 @@ public class FlappyBird extends ApplicationAdapter {
 
 	Texture topTube;
 	Texture bottomTube;
-	float gap = 400;
+	float gap = 700;
 	float maxTubeOffset;
 	Random randomGenerator;
 	float tubeVelocity = 4;
@@ -67,7 +67,7 @@ public class FlappyBird extends ApplicationAdapter {
 
 		topTube = new Texture("toptube.png");
 		bottomTube = new Texture("bottomtube.png");
-		maxTubeOffset = Gdx.graphics.getHeight() / 2 - gap / 2 - 100;
+		maxTubeOffset = Gdx.graphics.getHeight() / 2 - gap / 2 - 100 ; //
 		randomGenerator = new Random();
 		distanceBetweenTubes = Gdx.graphics.getWidth() * 3 / 4;
 		topTubeRectangles = new Rectangle[numberOfTubes];
@@ -166,10 +166,7 @@ public class FlappyBird extends ApplicationAdapter {
 		} else if (gameState == 0) {
 
 			if (Gdx.input.justTouched()) {
-
-				gameState = 1;
-
-
+				gameState = 1 ;
 			}
 
 		} else if (gameState == 2) {
@@ -177,13 +174,11 @@ public class FlappyBird extends ApplicationAdapter {
 			batch.draw(gameover, Gdx.graphics.getWidth() / 2 - gameover.getWidth() / 2, Gdx.graphics.getHeight() / 2 - gameover.getHeight() / 2);
 
 			if (Gdx.input.justTouched()) {
-
 				gameState = 1;
 				startGame();
 				score = 0;
 				scoringTube = 0;
 				velocity = 0;
-
 
 			}
 
@@ -208,6 +203,8 @@ public class FlappyBird extends ApplicationAdapter {
 		//shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 		//shapeRenderer.setColor(Color.RED);
 		//shapeRenderer.circle(birdCircle.x, birdCircle.y, birdCircle.radius);
+
+
 
 		for (int i = 0; i < numberOfTubes; i++) {
 
