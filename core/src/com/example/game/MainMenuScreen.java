@@ -1,12 +1,9 @@
 package com.example.game;
 
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -24,8 +21,8 @@ public class MainMenuScreen implements Screen {
     Texture background;
     Image img;
 
-    Texture[] upTextures = new Texture[5];
-    Button[] buttons = new Button[5];
+    Texture[] upTextures = new Texture[6];
+    Button[] buttons = new Button[6];
 
 
     public MainMenuScreen(final MainGame maingame) {
@@ -64,26 +61,43 @@ public class MainMenuScreen implements Screen {
         Button.ButtonStyle style_m = new Button.ButtonStyle();
         style_m.up = new TextureRegionDrawable(new TextureRegion(upTextures[1]));
         buttons[1] = new Button(style_m);
-        buttons[1].setPosition(Gdx.graphics.getWidth() / 2 - 250, Gdx.graphics.getHeight() / 2 - 275);
+        buttons[1].setPosition(Gdx.graphics.getWidth() / 2 - 250, Gdx.graphics.getHeight() / 2 - 200);
         buttons[1].setWidth(500);
         buttons[1].setHeight(250);
         buttons[1].addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
-                game.setScreen(new FlappyBird(game));
+                game.setScreen(new MotionScreen(game));
                 dispose();
             }
         });
 
-        upTextures[2] = new Texture(Gdx.files.internal("button_quit.png"));
-        Button.ButtonStyle style_q = new Button.ButtonStyle();
-        style_q.up = new TextureRegionDrawable(new TextureRegion(upTextures[2]));
-        buttons[2] = new Button(style_q);
-        buttons[2].setPosition(Gdx.graphics.getWidth() / 2 - 250, Gdx.graphics.getHeight() / 2 - 525);
+        upTextures[2] = new Texture(Gdx.files.internal("button_voice.png"));
+        Button.ButtonStyle style_v = new Button.ButtonStyle();
+        style_v.up = new TextureRegionDrawable(new TextureRegion(upTextures[2]));
+        buttons[2] = new Button(style_v);
+        buttons[2].setPosition(Gdx.graphics.getWidth() / 2 - 250, Gdx.graphics.getHeight() / 2 - 375);
         buttons[2].setWidth(500);
         buttons[2].setHeight(250);
         buttons[2].addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+
+                game.setScreen(new VoiceScreen(game));
+                dispose();
+
+            }
+        });
+
+        upTextures[3] = new Texture(Gdx.files.internal("button_quit.png"));
+        Button.ButtonStyle style_q = new Button.ButtonStyle();
+        style_q.up = new TextureRegionDrawable(new TextureRegion(upTextures[3]));
+        buttons[3] = new Button(style_q);
+        buttons[3].setPosition(Gdx.graphics.getWidth() / 2 - 250, Gdx.graphics.getHeight() / 2 - 550);
+        buttons[3].setWidth(500);
+        buttons[3].setHeight(250);
+        buttons[3].addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
@@ -92,12 +106,12 @@ public class MainMenuScreen implements Screen {
             }
         });
 
-        upTextures[3] = new Texture(Gdx.files.internal("score.png"));
+        upTextures[4] = new Texture(Gdx.files.internal("score.png"));
         Button.ButtonStyle style_s = new Button.ButtonStyle();
-        style_s.up = new TextureRegionDrawable(new TextureRegion(upTextures[3]));
-        buttons[3] = new Button(style_s);
-        buttons[3].setPosition(20, 20);
-        buttons[3].addListener(new ClickListener() {
+        style_s.up = new TextureRegionDrawable(new TextureRegion(upTextures[4]));
+        buttons[4] = new Button(style_s);
+        buttons[4].setPosition(20, 20);
+        buttons[4].addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
@@ -107,12 +121,15 @@ public class MainMenuScreen implements Screen {
             }
         });
 
-        upTextures[4] = new Texture(Gdx.files.internal("background.png"));
+        upTextures[5] = new Texture(Gdx.files.internal("background.png"));
         Button.ButtonStyle style_b = new Button.ButtonStyle();
-        style_b.up = new TextureRegionDrawable(new TextureRegion(upTextures[4]));
-        buttons[4] = new Button(style_b);
-        buttons[4].setPosition(Gdx.graphics.getWidth() - buttons[4].getWidth(), 0);
-        buttons[4].addListener(new ClickListener() {
+        style_b.up = new TextureRegionDrawable(new TextureRegion(upTextures[5]));
+        buttons[5] = new Button(style_b);
+        buttons[5].setPosition(Gdx.graphics.getWidth() - buttons[5].getWidth(), 0);
+        buttons[5].setPosition(Gdx.graphics.getWidth() - 250, 0);
+        buttons[5].setWidth(240);
+        buttons[5].setHeight(240);
+        buttons[5].addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
@@ -128,6 +145,7 @@ public class MainMenuScreen implements Screen {
         stage.addActor(buttons[2]);
         stage.addActor(buttons[3]);
         stage.addActor(buttons[4]);
+        stage.addActor(buttons[5]);
     }
 
     @Override
@@ -163,5 +181,8 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void dispose() {
+        
+        stage.dispose();
+        
     }
 }
