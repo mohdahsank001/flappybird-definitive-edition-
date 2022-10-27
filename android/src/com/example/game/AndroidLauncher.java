@@ -14,7 +14,7 @@ public class AndroidLauncher extends AndroidApplication {
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
 		config.useGyroscope = true;
-		AndroidApplication a = new AndroidApplication();
+		
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 			if(this.checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
 				this.requestPermissions(new String[] {Manifest.permission.RECORD_AUDIO},1);
