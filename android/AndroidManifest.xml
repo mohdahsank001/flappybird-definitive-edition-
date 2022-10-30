@@ -4,6 +4,11 @@
     package="com.example.game">
 
     <uses-feature android:glEsVersion="0x00020000" android:required="true" />
+
+
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application

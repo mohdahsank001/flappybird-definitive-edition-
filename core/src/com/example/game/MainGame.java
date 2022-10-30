@@ -10,9 +10,15 @@ public class MainGame extends Game {
 
     SpriteBatch batch;
     BitmapFont font;
+
     FirebaseInterface FI;
+
+    BluetoothInterface BI;
+    boolean buttonOn = false;
+    int bluetoothStatus;
     
-    public MainGame(FirebaseInterface FI){
+    public MainGame(BluetoothInterface BI, FirebaseInterface FI){
+        this.BI = BI;
         this.FI = FI;
     }
 
@@ -33,6 +39,15 @@ public class MainGame extends Game {
     public void dispose() {
         batch.dispose();
         font.dispose();
+    }
+
+    public void bluetoothPress() {
+        buttonOn = true;
+    }
+
+
+    public void setBluetoothStatus(int statusCode) {
+        bluetoothStatus = statusCode;
     }
 
 }
