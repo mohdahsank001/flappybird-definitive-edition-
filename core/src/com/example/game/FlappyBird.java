@@ -1,6 +1,8 @@
 package com.example.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -15,7 +17,8 @@ import com.badlogic.gdx.math.Rectangle;
 import java.util.Random;
 
 
-public class FlappyBird extends ApplicationAdapter {
+public class FlappyBird implements Screen {
+	final MainGame game;
 	SpriteBatch batch;
 	Texture background;
 	//ShapeRenderer shapeRenderer;
@@ -47,10 +50,11 @@ public class FlappyBird extends ApplicationAdapter {
 	Rectangle[] topTubeRectangles;
 	Rectangle[] bottomTubeRectangles;
 
+	FirebaseInterface FI;
+	int uploadCount;
 
-
-	@Override
-	public void create () {
+	public FlappyBird(final MainGame maingame, FirebaseInterface FI) {
+		game = maingame;
 		batch = new SpriteBatch();
 		background = new Texture("bg.png");
 		gameover = new Texture("gameover.png");
@@ -73,6 +77,9 @@ public class FlappyBird extends ApplicationAdapter {
 		topTubeRectangles = new Rectangle[numberOfTubes];
 		bottomTubeRectangles = new Rectangle[numberOfTubes];
 
+		this.FI = FI;
+		uploadCount = 0;
+		
 		startGame();
 
 
@@ -97,7 +104,7 @@ public class FlappyBird extends ApplicationAdapter {
 	}
 
 	@Override
-	public void render () {
+	public void render (float delta) {
 
 		batch.begin();
 		batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -169,22 +176,26 @@ public class FlappyBird extends ApplicationAdapter {
 
 				gameState = 1;
 
-
 			}
 
 		} else if (gameState == 2) {
 
+			FI.updateData(score, uploadCount);
+			uploadCount = 1;
+			
 			batch.draw(gameover, Gdx.graphics.getWidth() / 2 - gameover.getWidth() / 2, Gdx.graphics.getHeight() / 2 - gameover.getHeight() / 2);
 
 			if (Gdx.input.justTouched()) {
 
+				/*
 				gameState = 1;
 				startGame();
 				score = 0;
 				scoringTube = 0;
 				velocity = 0;
-
-
+				*/
+				game.setScreen(new MainMenuScreen(game, FI));
+				dispose();
 			}
 
 		}
@@ -230,7 +241,34 @@ public class FlappyBird extends ApplicationAdapter {
 
 
 	}
+	@Override
+	public void resize(int width, int height) {
+	}
 
+	@Override
+	public void show() {
+		// start the playback of the background music
+		// when the screen is shown
+		//rainMusic.play();
+	}
+
+	@Override
+	public void hide() {
+	}
+
+	@Override
+	public void pause() {
+	}
+
+	@Override
+	public void resume() {
+	}
+
+	@Override
+	public void dispose() {
+		//dropSound.dispose();
+		//rainMusic.dispose();
+	}
 
 }
 
