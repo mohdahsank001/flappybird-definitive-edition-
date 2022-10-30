@@ -9,11 +9,12 @@ public class StartScreen implements Screen {
 
     final MainGame game;
     OrthographicCamera camera;
+    FirebaseInterface FI;
 
-    public StartScreen(final MainGame maingame) {
+    public StartScreen(final MainGame maingame, FirebaseInterface FI) {
 
         game = maingame;
-
+        this.FI = FI;
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
     }
