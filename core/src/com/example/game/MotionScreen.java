@@ -53,7 +53,7 @@ public class MotionScreen implements Screen{
     float up;
     float down;
 
-    public MotionScreen(final MainGame maingame) {
+    public MotionScreen(final MainGame maingame, FirebaseInterface FI) {
 
         game = maingame;
         batch = new SpriteBatch();
