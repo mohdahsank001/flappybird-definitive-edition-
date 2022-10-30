@@ -10,6 +10,11 @@ public class MainGame extends Game {
 
     SpriteBatch batch;
     BitmapFont font;
+    FirebaseInterface FI;
+    
+    public MainGame(FirebaseInterface FI){
+        this.FI = FI;
+    }
 
     public void create() {
         batch = new SpriteBatch();
@@ -18,7 +23,7 @@ public class MainGame extends Game {
         font.getData().scale(2);
         //font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         font.setColor(Color.BLACK);
-        this.setScreen(new StartScreen(this));
+        this.setScreen(new StartScreen(this, FI));
     }
 
     public void render() {
