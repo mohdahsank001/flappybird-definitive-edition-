@@ -229,7 +229,7 @@ public class VoiceScreen implements Screen {
 				velocity = 0;
 				*/
                 recorder.dispose();
-                game.setScreen(new MainMenuScreen(game));
+                game.setScreen(new MainMenuScreen(game, FI));
                 dispose();
             }
 
