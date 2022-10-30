@@ -7,7 +7,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
@@ -26,7 +29,6 @@ public class MainMenuScreen implements Screen {
 
 
     public MainMenuScreen(final MainGame maingame) {
-
         game = maingame;
 
         stage = new Stage(new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
@@ -90,22 +92,48 @@ public class MainMenuScreen implements Screen {
             }
         });
 
-        upTextures[3] = new Texture(Gdx.files.internal("button_bluetooth.png"));
+        if (game.bluetoothStatus == 1) {
+            upTextures[3] = new Texture(Gdx.files.internal("button_bluetooth.png"));
+        }
+        else {
+            upTextures[3] = new Texture(Gdx.files.internal("button_bluetooth1.png"));
+        }
         Button.ButtonStyle style_bt = new Button.ButtonStyle();
         style_bt.up = new TextureRegionDrawable(new TextureRegion(upTextures[3]));
         buttons[3] = new Button(style_bt);
         buttons[3].setPosition(Gdx.graphics.getWidth() / 2 - 250, Gdx.graphics.getHeight() / 2 - 550);
         buttons[3].setWidth(500);
         buttons[3].setHeight(250);
-        buttons[3].addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-
-                game.setScreen(new FlappyBird(game));
-                dispose();
-
-            }
-        });
+        if (game.bluetoothStatus == 1) {
+            buttons[3].addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    if (game.BI.isControllerAvailable()) {
+                        game.setScreen(new BluetoothScreen(game));
+                    }
+                    else {
+                        game.BI.bluetoothUnavailableMsg();
+                        game.bluetoothStatus = 3;
+                        game.setScreen(new MainMenuScreen(game));
+                    }
+                    dispose();
+                }
+            });
+        }
+        else {
+            buttons[3].addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    game.BI.bluetoothUnavailableHandler();
+                    if (game.BI.isControllerAvailable()) {
+                        game.BI.bluetoothAvailableMsg();
+                        game.bluetoothStatus = 1;
+                        game.setScreen(new MainMenuScreen(game));
+                        dispose();
+                    }
+                }
+            });
+        }
 
         upTextures[4] = new Texture(Gdx.files.internal("button_quit.png"));
         Button.ButtonStyle style_q = new Button.ButtonStyle();

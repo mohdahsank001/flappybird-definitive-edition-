@@ -10,6 +10,13 @@ public class MainGame extends Game {
 
     SpriteBatch batch;
     BitmapFont font;
+    BluetoothInterface BI;
+    boolean buttonOn = false;
+    int bluetoothStatus;
+
+    public MainGame(BluetoothInterface BI) {
+        this.BI = BI;
+    }
 
     public void create() {
         batch = new SpriteBatch();
@@ -30,4 +37,12 @@ public class MainGame extends Game {
         font.dispose();
     }
 
+    public void bluetoothPress() {
+        buttonOn = true;
+    }
+
+
+    public void setBluetoothStatus(int statusCode) {
+        bluetoothStatus = statusCode;
+    }
 }
