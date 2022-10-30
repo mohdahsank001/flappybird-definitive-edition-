@@ -24,6 +24,7 @@ public class MainMenuScreen implements Screen {
     Texture[] upTextures = new Texture[7];
     Button[] buttons = new Button[7];
 
+    FirebaseInterface FI;
 
     public MainMenuScreen(final MainGame maingame, final FirebaseInterface FI) {
 
