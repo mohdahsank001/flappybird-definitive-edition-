@@ -22,6 +22,6 @@ public class AndroidLauncher extends AndroidApplication {
 
 		}
 
-		initialize(new MainGame(), config);
+		initialize(new MainGame(new AndroidInterfaceClass()), config);
 	}
 }
