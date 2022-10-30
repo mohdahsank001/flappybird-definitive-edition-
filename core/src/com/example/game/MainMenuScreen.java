@@ -25,8 +25,10 @@ public class MainMenuScreen implements Screen {
     Button[] buttons = new Button[7];
 
 
-    public MainMenuScreen(final MainGame maingame) {
+    public MainMenuScreen(final MainGame maingame, final FirebaseInterface FI) {
 
+        this.FI = FI;
+        
         game = maingame;
 
         stage = new Stage(new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
@@ -52,7 +54,7 @@ public class MainMenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
-                game.setScreen(new FlappyBird(game));
+                game.setScreen(new FlappyBird(game, FI));
                 dispose();
             }
         });
@@ -68,7 +70,7 @@ public class MainMenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
-                game.setScreen(new MotionScreen(game));
+                game.setScreen(new MotionScreen(game, FI));
                 dispose();
             }
         });
@@ -84,7 +86,7 @@ public class MainMenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
-                game.setScreen(new VoiceScreen(game));
+                game.setScreen(new VoiceScreen(game, FI));
                 dispose();
 
             }
@@ -101,7 +103,7 @@ public class MainMenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
-                game.setScreen(new FlappyBird(game));
+                game.setScreen(new FlappyBird(game, FI));
                 dispose();
 
             }
@@ -132,7 +134,7 @@ public class MainMenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
-                game.setScreen(new FlappyBird(game));
+                game.setScreen(new LeaderboardScreen(game, FI));
                 dispose();
 
             }
@@ -150,7 +152,7 @@ public class MainMenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
-                game.setScreen(new FlappyBird(game));
+                game.setScreen(new FlappyBird(game, FI));
                 dispose();
 
             }
