@@ -1,27 +1,20 @@
-package com.example.loc_application;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.updated_loc;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
 import android.provider.Settings;
 import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -32,25 +25,13 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserFactory;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 
 
-public class MainActivity extends AppCompatActivity {
+class background extends AppCompatActivity {
 
     FusedLocationProviderClient mFusedLocationClient;
-    TextView latitudeTextView, longitTextView;
+    Double latitudeTextView, longitTextView;
     int PERMISSION_ID = 44;
     private Context con;
 
@@ -58,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.bck_note);
 
-        latitudeTextView = findViewById(R.id.latTextView);
-        longitTextView = findViewById(R.id.lonTextView);
+       // latitudeTextView = findViewById(R.id.latTextView);
+        //longitTextView = findViewById(R.id.lonTextView);
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -76,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (timeOfDay >= 7 && timeOfDay < 18) {
             //view.setBackground(R.drawable.night_image);
-            view.setBackgroundResource(R.drawable.day_image);
+            view.setBackgroundResource(R.drawable.bg_sunny);
         } else {
             view.setBackgroundResource(R.drawable.night_image);
         }
@@ -147,8 +128,10 @@ public class MainActivity extends AppCompatActivity {
 
         public void onLocationResult(LocationResult locationResult) {
             Location mLastLocation = locationResult.getLastLocation();
-            latitudeTextView.setText("Latitude: " + mLastLocation.getLatitude() + "");
-            longitTextView.setText("Longitude: " + mLastLocation.getLongitude() + "");
+            latitudeTextView = mLastLocation.getLatitude();
+            longitTextView = mLastLocation.getLongitude();
+            //latitudeTextView.setText("Latitude: " + mLastLocation.getLatitude() + "");
+            //longitTextView.setText("Longitude: " + mLastLocation.getLongitude() + "");
         }
     };
 

@@ -1,46 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    >
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/linearlayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-       >
+        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:text="Latitude:" />
+        <application
+            android:allowBackup="true"
+            android:dataExtractionRules="@xml/data_extraction_rules"
+            android:fullBackupContent="@xml/backup_rules"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.Loc_Application"
+            tools:targetApi="31">
+                <activity
+                    android:name=".MainActivity"
+                    android:exported="true">
+                        <intent-filter>
+                                <action android:name="android.intent.action.MAIN" />
 
+                                <category android:name="android.intent.category.LAUNCHER" />
+                        </intent-filter>
+                </activity>
+        </application>
         <TextView
             android:id="@+id/latTextView"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Latitude will be here! "
-            android:textColor="@color/black" />
-
-        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:text="Longitude:" />
-
+             />
         <TextView
             android:id="@+id/lonTextView"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Longitude will be here! "
-            android:textColor="@color/black" />
+            android:layout_width="wrap_content"
+            />
 
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</manifest>

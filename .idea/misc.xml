@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Vaibhavi Kulkarni/AndroidStudioProjects/Loc_Application/app/src/main/res/drawable/background.xml" value="0.17" />
-        <entry key="..\:/Users/Vaibhavi Kulkarni/AndroidStudioProjects/Loc_Application/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Vaibhavi Kulkarni/AndroidStudioProjects/Updated_loc/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/Vaibhavi Kulkarni/AndroidStudioProjects/Updated_loc/app/src/main/res/layout/bck_new.xml" value="0.16458333333333333" />
+        <entry key="..\:/Users/Vaibhavi Kulkarni/AndroidStudioProjects/Updated_loc/app/src/main/res/layout/bck_note.xml" value="0.12265625" />
+        <entry key="..\:/Users/Vaibhavi Kulkarni/AndroidStudioProjects/Updated_loc/app/src/main/res/xml/bck_note.xml" value="0.16354166666666667" />
       </map>
     </option>
   </component>
