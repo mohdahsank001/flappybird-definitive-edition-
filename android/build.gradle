@@ -113,6 +113,8 @@ dependencies {
 
     // Add this if you need google authorization
     implementation 'com.google.android.gms:play-services-auth:20.3.0'
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
 }
 
 repositories {

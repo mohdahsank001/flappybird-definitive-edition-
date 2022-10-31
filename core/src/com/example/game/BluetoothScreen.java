@@ -19,7 +19,7 @@ import java.util.Random;
 
 public class BluetoothScreen implements Screen{
 
-    final MainGame game;
+    public final MainGame game;
     SpriteBatch batch;
     Texture background;
     //ShapeRenderer shapeRenderer;

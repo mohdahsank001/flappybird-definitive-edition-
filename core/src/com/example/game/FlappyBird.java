@@ -131,6 +131,7 @@ public class FlappyBird implements Screen {
 
 			if (Gdx.input.justTouched()) {
 
+				//System.out.println("Clicked");
 				velocity = -30;
 
 			}

@@ -2,18 +2,20 @@ buildscript {
     
 
     repositories {
-        mavenLocal()
-        mavenCentral()
-        gradlePluginPortal()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         google()
         maven { url 'https://maven.google.com' }
+        mavenLocal()
+        mavenCentral()
+        gradlePluginPortal()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.1'
+
         
         // Make sure that you have the Google services Gradle plugin dependency
         classpath 'com.google.gms:google-services:4.3.14'
+
+        classpath 'com.android.tools.build:gradle:7.2.1'
 
         // Add the dependency for the Crashlytics Gradle plugin
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.2'

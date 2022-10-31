@@ -2,18 +2,21 @@ package com.example.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class MainGame extends Game {
+
+
+class MainGame extends Game {
 
     SpriteBatch batch;
     BitmapFont font;
 
+   // background bck = new background();
+
     FirebaseInterface FI;
 
-    BluetoothInterface BI;
+    public BluetoothInterface BI;
     boolean buttonOn = false;
     int bluetoothStatus;
     
@@ -51,3 +54,4 @@ public class MainGame extends Game {
     }
 
 }
+

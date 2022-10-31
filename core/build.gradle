@@ -1,4 +1,12 @@
 sourceCompatibility = 1.7
+dependencies {
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation project(path: ':android')
+    implementation 'com.google.android.gms:play-services-tasks:18.0.2'
+    implementation 'androidx.core:core:1.8.0'
+    implementation project(path: ':android')
+}
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 sourceSets.main.java.srcDirs = [ "src/" ]
