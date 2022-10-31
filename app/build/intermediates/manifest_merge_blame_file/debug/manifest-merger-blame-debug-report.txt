@@ -1,0 +1,103 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.weatherapp"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:6:5-67
+11-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:6:22-64
+12
+13    <application
+13-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:8:5-26:19
+14        android:allowBackup="true"
+14-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:9:9-35
+15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+15-->[androidx.core:core:1.8.0] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\cd33f26b4f6a5be75c2c675ec5e179dc\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+16        android:debuggable="true"
+17        android:icon="@mipmap/ic_launcher"
+17-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:10:9-43
+18        android:label="@string/app_name"
+18-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:11:9-41
+19        android:roundIcon="@mipmap/ic_launcher_round"
+19-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:12:9-54
+20        android:supportsRtl="true"
+20-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:13:9-35
+21        android:testOnly="true" >
+22        <activity
+22-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:15:9-25:20
+23            android:name="com.example.weatherapp.MainActivity"
+23-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:16:13-41
+24            android:exported="true"
+24-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:17:13-36
+25            android:label="@string/app_name"
+25-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:18:13-45
+26            android:theme="@style/Theme.WeatherApp" >
+26-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:19:13-52
+27            <intent-filter>
+27-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:20:13-24:29
+28                <action android:name="android.intent.action.MAIN" />
+28-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:21:17-69
+28-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:21:25-66
+29
+30                <category android:name="android.intent.category.LAUNCHER" />
+30-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:23:17-77
+30-->C:\Users\Vaibhavi Kulkarni\Documents\UOM\SEM1\Mobile_Computing_018\project\features\Weather-App\app\src\main\AndroidManifest.xml:23:27-74
+31            </intent-filter>
+32        </activity>
+33
+34        <provider
+34-->[com.squareup.picasso:picasso:2.71828] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\6acaaa73928e9eca5dfb2b27a9d3efbb\transformed\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
+35            android:name="com.squareup.picasso.PicassoProvider"
+35-->[com.squareup.picasso:picasso:2.71828] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\6acaaa73928e9eca5dfb2b27a9d3efbb\transformed\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
+36            android:authorities="com.example.weatherapp.com.squareup.picasso"
+36-->[com.squareup.picasso:picasso:2.71828] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\6acaaa73928e9eca5dfb2b27a9d3efbb\transformed\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
+37            android:exported="false" />
+37-->[com.squareup.picasso:picasso:2.71828] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\6acaaa73928e9eca5dfb2b27a9d3efbb\transformed\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
+38
+39        <activity
+39-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\8c3500a7dc83974c0d6f9856057323b5\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+40            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+40-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\8c3500a7dc83974c0d6f9856057323b5\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+41            android:exported="false"
+41-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\8c3500a7dc83974c0d6f9856057323b5\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+42            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+42-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\8c3500a7dc83974c0d6f9856057323b5\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+43
+44        <meta-data
+44-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\2c11ccd6b3c3c648ddbafb80b3873601\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+45            android:name="com.google.android.gms.version"
+45-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\2c11ccd6b3c3c648ddbafb80b3873601\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+46            android:value="@integer/google_play_services_version" />
+46-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\2c11ccd6b3c3c648ddbafb80b3873601\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+47
+48        <provider
+48-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\5e91b023516a338285bd49f27692db4f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+49            android:name="androidx.startup.InitializationProvider"
+49-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\5e91b023516a338285bd49f27692db4f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+50            android:authorities="com.example.weatherapp.androidx-startup"
+50-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\5e91b023516a338285bd49f27692db4f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+51            android:exported="false" >
+51-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\5e91b023516a338285bd49f27692db4f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+52            <meta-data
+52-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\5e91b023516a338285bd49f27692db4f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+53                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+53-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\5e91b023516a338285bd49f27692db4f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+54                android:value="androidx.startup" />
+54-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\5e91b023516a338285bd49f27692db4f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+55            <meta-data
+55-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\60d66295239e7383db0bc717e0e4f288\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+56                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+56-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\60d66295239e7383db0bc717e0e4f288\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+57                android:value="androidx.startup" />
+57-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Vaibhavi Kulkarni\.gradle\caches\transforms-3\60d66295239e7383db0bc717e0e4f288\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+58        </provider>
+59    </application>
+60
+61</manifest>
