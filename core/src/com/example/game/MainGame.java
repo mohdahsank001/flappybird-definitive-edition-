@@ -17,9 +17,12 @@ public class MainGame extends Game {
     boolean buttonOn = false;
     int bluetoothStatus;
     
-    public MainGame(BluetoothInterface BI, FirebaseInterface FI){
+    WeatherInterface WI;
+    
+    public MainGame(BluetoothInterface BI, FirebaseInterface FI, WeatherInterface WI;){
         this.BI = BI;
         this.FI = FI;
+        this.WI = WI;
     }
 
     public void create() {
