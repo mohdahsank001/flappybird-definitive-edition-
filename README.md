@@ -22,7 +22,8 @@ definitive edition of the classic flappy bird game developed by team065 at unime
 
 <br>
 <img width="1466" alt="image" src="https://user-images.githubusercontent.com/67852641/197109439-0fb3507a-6bd3-4265-963f-090e7c24bd70.png">
-
+<br>
+<img width="1237" alt="image" src="https://user-images.githubusercontent.com/67852641/199165413-ce070ae4-8c49-4999-8dc1-b3963f0e33e9.png">
 <br>
 Introducing floating tubes- In the new game, tubes are never attached to a surface but rather float in air. 
 We wanted users to score through the game, so we have introduced a new feature. In certain pipe configuration, you will be able to move below or above the tube. 
