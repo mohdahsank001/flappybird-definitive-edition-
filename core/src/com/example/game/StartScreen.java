@@ -9,7 +9,6 @@ public class StartScreen implements Screen {
 
     final MainGame game;
     OrthographicCamera camera;
-    FirebaseInterface FI;
 
     public StartScreen(final MainGame maingame) {
 
