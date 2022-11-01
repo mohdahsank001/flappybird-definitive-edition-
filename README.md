@@ -6,6 +6,9 @@ Change log :
 
 Update gap to 700 to make it more playable (in the FlappyBird.java file)
 
+Introducing floating tubes- In the new game, tubes are never attached to a surface but rather float in air. 
+We wanted users to score through the game, so we have introduced a new feature. In certain pipe configuration, you will be able to move below or above the tube. 
+
 ```
 
 
@@ -30,10 +33,7 @@ Update gap to 700 to make it more playable (in the FlappyBird.java file)
 <img width="1466" alt="image" src="https://user-images.githubusercontent.com/67852641/197109439-0fb3507a-6bd3-4265-963f-090e7c24bd70.png">
 
 <br>
-```
-Introducing floating tubes- In the new game, tubes are never attached to a surface but rather float in air. 
-We wanted users to score through the game, so we have introduced a new feature. In certain pipe configuration, you will be able to move below or above the tube. 
-```
+
 <img width="1466" alt="image" src="https://user-images.githubusercontent.com/67852641/197379660-f8ae49a3-1828-4b51-a81c-648ceb4c096f.png">
 
 
