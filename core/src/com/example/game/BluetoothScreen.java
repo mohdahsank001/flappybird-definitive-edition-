@@ -199,7 +199,7 @@ public class BluetoothScreen implements Screen{
 				scoringTube = 0;
 				velocity = 0;
 				*/
-                game.setScreen(new MainMenuScreen(game, FI));
+                game.setScreen(new MainMenuScreen(game));
                 game.buttonOn = false;
                 dispose();
             }
