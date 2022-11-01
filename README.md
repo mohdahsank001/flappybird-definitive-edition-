@@ -1,4 +1,4 @@
-# flappybird-definitive-edition-
+# flappybird-definitive-edition- (GAME OF THE YEAR EDITION)
 definitive edition of the classic flappy bird game developed by team065 at unimelb for COMP90018 Assignment Component.
 
 
@@ -25,8 +25,10 @@ definitive edition of the classic flappy bird game developed by team065 at unime
 <br>
 <img width="1108" alt="image" src="https://user-images.githubusercontent.com/67852641/199165672-5e19a162-82f3-43c2-83b8-52fdadc7275b.png">
 <br>
-****Introducing floating tubes- In the new game, tubes are never attached to a surface but rather float in air. 
-We wanted users to score through the game, so we have introduced a new feature. In certain pipe configuration, you will be able to move below or above the tube. ****
+'''
+Introducing floating tubes- In the new game, tubes are never attached to a surface but rather float in air. 
+We wanted users to score through the game, so we have introduced a new feature. In certain pipe configuration, you will be able to move below or above the tube. 
+'''
 <img width="1108" alt="image" src="https://user-images.githubusercontent.com/67852641/199165827-f5896143-e495-4057-9ac1-cc479b841197.png">
 
 
