@@ -57,8 +57,16 @@ public class VoiceScreen implements Screen {
     public VoiceScreen(final MainGame maingame) {
 
         gameSession = maingame;
+
+        gameSession.LLI.getLastLocation();
+
+        String weather = gameSession.WI.getWeather(gameSession.LLI.getLatitude(), gameSession.LLI.getLongitude());
+
+        System.out.println("THE latitude finally is " + gameSession.LLI.getLatitude());
+        System.out.println("THE longitude finally is " + gameSession.LLI.getLongitude());
+
         group = new SpriteBatch();
-        ScreenPicture = new Texture("bg.png");
+        ScreenPicture = new Texture(gameSession.WI.setBackground(weather));
         Endsession = new Texture("gameover.png");
         //shapeRenderer = new ShapeRenderer();
         birdreach = new Circle();
