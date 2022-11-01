@@ -39,7 +39,7 @@ public class FlappyBird implements Screen {
 
 	Texture topTube;
 	Texture bottomTube;
-	float gap = 400;
+	float gap = 700;
 	float maxTubeOffset;
 	Random randomGenerator;
 	float tubeVelocity = 4;
