@@ -34,7 +34,7 @@ We wanted users to score through the game, so we have introduced a new feature.
 In certain pipe configuration, you will be able to move below or above the tube unlike conventional game setting where tubes are quite often attached to the surface.  
 
 ```
-<img width="1108" alt="image" src="https://user-images.githubusercontent.com/67852641/199166969-344afdce-ed94-4e22-bb99-dbfe7500df02.png">
+<img width="1108" alt="image" src="https://user-images.githubusercontent.com/67852641/199167487-15fa35aa-ee49-44fc-a3d8-73f9462eb620.png">
 
 
 
