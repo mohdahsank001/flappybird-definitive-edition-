@@ -37,7 +37,7 @@ public class VoiceScreen implements Screen {
 
     Texture topTube;
     Texture bottomTube;
-    float gap = 400;
+    float gap = 700;
     float maxTubeOffset;
     Random randomGenerator;
     float tubeVelocity = 4;
@@ -69,7 +69,6 @@ public class VoiceScreen implements Screen {
         birds = new Texture[2];
         birds[0] = new Texture("bird.png");
         birds[1] = new Texture("bird1.png");
-
 
         topTube = new Texture("toptube.png");
         bottomTube = new Texture("bottomtube.png");
@@ -211,7 +210,7 @@ public class VoiceScreen implements Screen {
 
         } else if (gameState == 2) {
 
-	    game.FI.updateData(score, uploadCount);
+	        game.FI.updateData(score, uploadCount);
             uploadCount = 1;
 		
             batch.draw(gameover, Gdx.graphics.getWidth() / 2 - gameover.getWidth() / 2, Gdx.graphics.getHeight() / 2 - gameover.getHeight() / 2);

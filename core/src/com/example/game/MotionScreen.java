@@ -36,7 +36,7 @@ public class MotionScreen implements Screen{
 
     Texture topTube;
     Texture bottomTube;
-    float gap = 400;
+    float gap = 700;
     float maxTubeOffset;
     Random randomGenerator;
     float tubeVelocity = 4;
@@ -187,7 +187,7 @@ public class MotionScreen implements Screen{
 
         } else if (gameState == 2) {
 		
-	    game.FI.updateData(score, uploadCount);
+	        game.FI.updateData(score, uploadCount);
             uploadCount = 1;
 
             batch.draw(gameover, Gdx.graphics.getWidth() / 2 - gameover.getWidth() / 2, Gdx.graphics.getHeight() / 2 - gameover.getHeight() / 2);

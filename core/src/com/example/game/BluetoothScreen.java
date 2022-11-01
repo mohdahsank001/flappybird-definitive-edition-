@@ -41,7 +41,7 @@ public class BluetoothScreen implements Screen{
     Texture topTube;
     Texture bottomTube;
     Texture gamepad;
-    float gap = 400;
+    float gap = 700;
     float maxTubeOffset;
     Random randomGenerator;
     float tubeVelocity = 4;
@@ -55,7 +55,7 @@ public class BluetoothScreen implements Screen{
     int uploadCount;
 
 
-    public BluetoothScreen(final MainGame maingame, FirebaseInterface FI) {
+    public BluetoothScreen(final MainGame maingame) {
         game = maingame;
         batch = new SpriteBatch();
         background = new Texture("bg.png");
@@ -80,7 +80,6 @@ public class BluetoothScreen implements Screen{
         topTubeRectangles = new Rectangle[numberOfTubes];
         bottomTubeRectangles = new Rectangle[numberOfTubes];
 
-        this.FI = FI;
         uploadCount = 0;
 
         startGame();

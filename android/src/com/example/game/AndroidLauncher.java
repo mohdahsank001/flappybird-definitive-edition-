@@ -22,7 +22,9 @@ import java.util.ArrayList;
 public class AndroidLauncher extends AndroidApplication {
 
 	BluetoothAdapter BA = BluetoothAdapter.getDefaultAdapter();
-	MainGame MG = new MainGame(new AndroidInterfaceBluetoothClass(this), new AndroidInterfaceClass(), new AndroidWeatherInterface());
+	MainGame MG = new MainGame(new AndroidInterfaceBluetoothClass(this),
+			new AndroidInterfaceClass(), new AndroidWeatherInterface(),
+			new AndroidLatLonInterfaceClass(this));
 
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {

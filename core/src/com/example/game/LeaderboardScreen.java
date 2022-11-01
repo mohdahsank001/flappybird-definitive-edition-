@@ -39,7 +39,7 @@ public class LeaderboardScreen implements Screen {
         img.setHeight(Gdx.graphics.getHeight());
 
         game.FI.readData();
-        leaderboard = FI.transferData();
+        leaderboard = game.FI.transferData();
 
     }
 

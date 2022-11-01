@@ -39,7 +39,7 @@ public class FlappyBird implements Screen {
 
 	Texture topTube;
 	Texture bottomTube;
-	float gap = 400;
+	float gap = 700;
 	float maxTubeOffset;
 	Random randomGenerator;
 	float tubeVelocity = 4;
@@ -54,9 +54,9 @@ public class FlappyBird implements Screen {
 
 	public FlappyBird(final MainGame maingame) {
 		game = maingame;
-		
-		String weather = game.WI.getWeather(31.2304, 121.4737);
-		
+
+		String weather = game.WI.getWeather(game.LLI.getLatitude(), game.LLI.getLongitude());
+
 		batch = new SpriteBatch();
 		background = new Texture(game.WI.setBackground(weather));
 		gameover = new Texture("gameover.png");
@@ -84,10 +84,11 @@ public class FlappyBird implements Screen {
 		startGame();
 
 
-
 	}
 
 	public void startGame() {
+
+
 
 		birdY = Gdx.graphics.getHeight() / 2 - birds[0].getHeight() / 2;
 
