@@ -1,3 +1,10 @@
+plugins {
+    id 'com.android.application'
+
+    // Add the Google services Gradle plugin
+    id 'com.google.gms.google-services'
+}
+
 android {
     buildToolsVersion "33.0.0"
     compileSdkVersion 33
@@ -20,7 +27,7 @@ android {
     }
     defaultConfig {
         applicationId "com.example.game"
-        minSdkVersion 14
+        minSdkVersion 19
         targetSdkVersion 33
         versionCode 1
         versionName "1.0"
@@ -31,6 +38,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.md'
+        exclude 'META-INF/LICENSE-notice.md'
+    }
+
 }
 
 
@@ -90,3 +103,39 @@ task run(type: Exec) {
 }
 
 eclipse.project.name = appName + "-android"
+
+dependencies {
+    implementation "pl.mk5.gdx-fireapp:gdx-fireapp-core:3.3.0"
+    implementation "pl.mk5.gdx-fireapp:gdx-fireapp-android:3.3.0" // the version you are using
+
+    implementation platform("com.google.firebase:firebase-bom:31.0.2")
+    implementation 'com.google.firebase:firebase-firestore:24.4.0'
+    implementation 'com.google.firebase:firebase-core:21.1.1'
+    implementation 'com.google.firebase:firebase-storage'
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
+
+    // Add this if you need google authorization
+    implementation 'com.google.android.gms:play-services-auth:20.3.0'
+
+    implementation 'com.github.prominence:openweathermap-api:2.3.0'
+
+    implementation 'com.google.android.gms:play-services-location:19.0.0'
+
+    implementation 'androidx.activity:activity:1.6.1'
+
+    //implementation 'com.google.code.gson:gson:2.8.5'
+}
+
+repositories {
+    maven { url 'https://maven.google.com' }
+    // or google() depends of your build tools version.
+}
+
+// put following line at bottom of the file
+apply plugin: 'com.google.firebase.crashlytics'
+
+//apply plugin: 'com.android.library'
+apply plugin: 'com.google.gms.google-services'

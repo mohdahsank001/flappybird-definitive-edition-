@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "584220354729",
+    "firebase_url": "https://flappy-bird-9a16e-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "flappy-bird-9a16e",
+    "storage_bucket": "flappy-bird-9a16e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584220354729:android:5ca32f59ed49c2958ee1b8",
+        "android_client_info": {
+          "package_name": "com.example.game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584220354729-9rbcmerrm2o0vnffg1ts7vt7dksrcuq7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-F_VR7iDYqEqq68TuwdCA_82kJhLPflM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584220354729-9rbcmerrm2o0vnffg1ts7vt7dksrcuq7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
