@@ -11,10 +11,9 @@ public class StartScreen implements Screen {
     OrthographicCamera camera;
     FirebaseInterface FI;
 
-    public StartScreen(final MainGame maingame, FirebaseInterface FI) {
+    public StartScreen(final MainGame maingame) {
 
         game = maingame;
-        this.FI = FI;
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
     }
@@ -32,7 +31,7 @@ public class StartScreen implements Screen {
         game.batch.end();
 
         if (Gdx.input.isTouched()) {
-            game.setScreen(new MainMenuScreen(game, FI));
+            game.setScreen(new MainMenuScreen(game));
             dispose();
         }
     }
