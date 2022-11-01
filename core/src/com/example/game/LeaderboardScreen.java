@@ -20,10 +20,9 @@ public class LeaderboardScreen implements Screen {
     Texture background;
     Image img;
 
-    FirebaseInterface FI;
     Map<String, Object> leaderboard = new HashMap<>();
 
-    public LeaderboardScreen(final MainGame maingame, FirebaseInterface FI){
+    public LeaderboardScreen(final MainGame maingame){
 
         game = maingame;
 
@@ -39,8 +38,7 @@ public class LeaderboardScreen implements Screen {
         img.setWidth(Gdx.graphics.getWidth());
         img.setHeight(Gdx.graphics.getHeight());
 
-        this.FI = FI;
-        this.FI.readData();
+        game.FI.readData();
         leaderboard = FI.transferData();
 
     }
@@ -72,7 +70,7 @@ public class LeaderboardScreen implements Screen {
 				scoringTube = 0;
 				velocity = 0;
 				*/
-            game.setScreen(new MainMenuScreen(game, FI));
+            game.setScreen(new MainMenuScreen(game));
             dispose();
         }
     }
