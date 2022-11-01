@@ -29,10 +29,8 @@ public class MainMenuScreen implements Screen {
 
     FirebaseInterface FI;
 
-    public MainMenuScreen(final MainGame maingame, final FirebaseInterface FI) {
+    public MainMenuScreen(final MainGame maingame) {
 
-        this.FI = FI;
-        
         game = maingame;
 
         stage = new Stage(new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
@@ -58,7 +56,7 @@ public class MainMenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
-                game.setScreen(new FlappyBird(game, FI));
+                game.setScreen(new FlappyBird(game));
                 dispose();
             }
         });
@@ -74,7 +72,7 @@ public class MainMenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
-                game.setScreen(new MotionScreen(game, FI));
+                game.setScreen(new MotionScreen(game));
                 dispose();
             }
         });
@@ -90,7 +88,7 @@ public class MainMenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
-                game.setScreen(new VoiceScreen(game, FI));
+                game.setScreen(new VoiceScreen(game));
                 dispose();
 
             }
@@ -116,12 +114,12 @@ public class MainMenuScreen implements Screen {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     if (game.BI.isControllerAvailable()) {
-                        game.setScreen(new BluetoothScreen(game, FI));
+                        game.setScreen(new BluetoothScreen(game));
                     }
                     else {
                         game.BI.bluetoothUnavailableMsg();
                         game.bluetoothStatus = 3;
-                        game.setScreen(new MainMenuScreen(game, FI));
+                        game.setScreen(new MainMenuScreen(game));
                     }
                     dispose();
                 }
@@ -135,7 +133,7 @@ public class MainMenuScreen implements Screen {
                     if (game.BI.isControllerAvailable()) {
                         game.BI.bluetoothAvailableMsg();
                         game.bluetoothStatus = 1;
-                        game.setScreen(new MainMenuScreen(game, FI));
+                        game.setScreen(new MainMenuScreen(game));
                         dispose();
                     }
                 }
@@ -167,7 +165,7 @@ public class MainMenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
-                game.setScreen(new LeaderboardScreen(game, FI));
+                game.setScreen(new LeaderboardScreen(game));
                 dispose();
 
             }
@@ -185,7 +183,7 @@ public class MainMenuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
-                game.setScreen(new FlappyBird(game, FI));
+                game.setScreen(new FlappyBird(game));
                 dispose();
 
             }
