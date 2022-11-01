@@ -47,13 +47,12 @@ public class MotionScreen implements Screen{
     Rectangle[] topTubeRectangles;
     Rectangle[] bottomTubeRectangles;
 
-    FirebaseInterface FI;
     int uploadCount;
 	
     float up;
     float down;
 
-    public MotionScreen(final MainGame maingame, FirebaseInterface FI) {
+    public MotionScreen(final MainGame maingame) {
 
         game = maingame;
         batch = new SpriteBatch();
@@ -78,7 +77,6 @@ public class MotionScreen implements Screen{
         topTubeRectangles = new Rectangle[numberOfTubes];
         bottomTubeRectangles = new Rectangle[numberOfTubes];
 
-	this.FI = FI;
         uploadCount = 0;
 	    
         startGame();
@@ -203,7 +201,7 @@ public class MotionScreen implements Screen{
 				scoringTube = 0;
 				velocity = 0;
 				*/
-                game.setScreen(new MainMenuScreen(game, FI));
+                game.setScreen(new MainMenuScreen(game));
                 dispose();
             }
 
