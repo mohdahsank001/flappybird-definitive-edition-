@@ -2,7 +2,7 @@
 definitive edition of the classic flappy bird game developed by team065 at unimelb for COMP90018 Assignment Component.
 
 ```
-Update log : 
+Change log : 
 
 Update gap to 700 to make it more playable (in the FlappyBird.java file)
 
