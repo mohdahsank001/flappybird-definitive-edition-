@@ -1,267 +1,163 @@
 package com.example.game;
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Circle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
-
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Circle;
+import com.badlogic.gdx.Screen;
 import java.util.Random;
-
-
 public class FlappyBird implements Screen {
-	final MainGame game;
-	SpriteBatch batch;
-	Texture background;
-	//ShapeRenderer shapeRenderer;
-
-	Texture gameover;
-
-	Texture[] birds;
-	int flapState = 0;
-	float birdY = 0;
-	float velocity = 0;
-	Circle birdCircle;
-	int score = 0;
-	int scoringTube = 0;
-	BitmapFont font;
-
-	int gameState = 0;
-	float gravity = 2;
-
-	Texture topTube;
-	Texture bottomTube;
-	float gap = 400;
-	float maxTubeOffset;
-	Random randomGenerator;
-	float tubeVelocity = 4;
-	int numberOfTubes = 4;
-	float[] tubeX = new float[numberOfTubes];
-	float[] tubeOffset = new float[numberOfTubes];
-	float distanceBetweenTubes;
-	Rectangle[] topTubeRectangles;
-	Rectangle[] bottomTubeRectangles;
-
-
-	public FlappyBird(final MainGame maingame) {
-		game = maingame;
-		batch = new SpriteBatch();
-		background = new Texture("bg.png");
-		gameover = new Texture("gameover.png");
-		//shapeRenderer = new ShapeRenderer();
-		birdCircle = new Circle();
-		font = new BitmapFont();
-		font.setColor(Color.WHITE);
-		font.getData().setScale(10);
-
-		birds = new Texture[2];
-		birds[0] = new Texture("bird.png");
-		birds[1] = new Texture("bird1.png");
-
-
-		topTube = new Texture("toptube.png");
-		bottomTube = new Texture("bottomtube.png");
-		maxTubeOffset = Gdx.graphics.getHeight() / 2 - gap / 2 - 100;
-		randomGenerator = new Random();
-		distanceBetweenTubes = Gdx.graphics.getWidth() * 3 / 4;
-		topTubeRectangles = new Rectangle[numberOfTubes];
-		bottomTubeRectangles = new Rectangle[numberOfTubes];
-
-		startGame();
-
-
-
-	}
-
-	public void startGame() {
-
-		birdY = Gdx.graphics.getHeight() / 2 - birds[0].getHeight() / 2;
-
-		for (int i = 0; i < numberOfTubes; i++) {
-
-			tubeOffset[i] = (randomGenerator.nextFloat() - 0.5f) * (Gdx.graphics.getHeight() - gap - 200);
-
-			tubeX[i] = Gdx.graphics.getWidth() / 2 - topTube.getWidth() / 2 + Gdx.graphics.getWidth() + i * distanceBetweenTubes;
-
-			topTubeRectangles[i] = new Rectangle();
-			bottomTubeRectangles[i] = new Rectangle();
-
-		}
-
-	}
-
-	@Override
-	public void render (float delta) {
-
-		batch.begin();
-		batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
-		if (gameState == 1) {
-
-			if (tubeX[scoringTube] < Gdx.graphics.getWidth() / 2) {
-
-				score++;
-
-				Gdx.app.log("Score", String.valueOf(score));
-
-				if (scoringTube < numberOfTubes - 1) {
-
-					scoringTube++;
-
-				} else {
-
-					scoringTube = 0;
-
-				}
-
-			}
-
-			if (Gdx.input.justTouched()) {
-
-				velocity = -30;
-
-			}
-
-			for (int i = 0; i < numberOfTubes; i++) {
-
-				if (tubeX[i] < - topTube.getWidth()) {
-
-					tubeX[i] += numberOfTubes * distanceBetweenTubes;
-					tubeOffset[i] = (randomGenerator.nextFloat() - 0.5f) * (Gdx.graphics.getHeight() - gap - 200);
-
-				} else {
-
-					tubeX[i] = tubeX[i] - tubeVelocity;
-
-
-
-				}
-
-				batch.draw(topTube, tubeX[i], Gdx.graphics.getHeight() / 2 + gap / 2 + tubeOffset[i]);
-				batch.draw(bottomTube, tubeX[i], Gdx.graphics.getHeight() / 2 - gap / 2 - bottomTube.getHeight() + tubeOffset[i]);
-
-				topTubeRectangles[i] = new Rectangle(tubeX[i], Gdx.graphics.getHeight() / 2 + gap / 2 + tubeOffset[i], topTube.getWidth(), topTube.getHeight());
-				bottomTubeRectangles[i] = new Rectangle(tubeX[i], Gdx.graphics.getHeight() / 2 - gap / 2 - bottomTube.getHeight() + tubeOffset[i], bottomTube.getWidth(), bottomTube.getHeight());
-			}
-
-
-
-			if (birdY > 0) {
-
-				velocity = velocity + gravity;
-				birdY -= velocity;
-
-			} else {
-
-				gameState = 2;
-
-			}
-
-		} else if (gameState == 0) {
-
-			if (Gdx.input.justTouched()) {
-
-				gameState = 1;
-
-			}
-
-		} else if (gameState == 2) {
-
-			batch.draw(gameover, Gdx.graphics.getWidth() / 2 - gameover.getWidth() / 2, Gdx.graphics.getHeight() / 2 - gameover.getHeight() / 2);
-
-			if (Gdx.input.justTouched()) {
-
-				/*
-				gameState = 1;
-				startGame();
-				score = 0;
-				scoringTube = 0;
-				velocity = 0;
-				*/
-				game.setScreen(new MainMenuScreen(game));
-				dispose();
-			}
-
-		}
-
-		if (flapState == 0) {
-			flapState = 1;
-		} else {
-			flapState = 0;
-		}
-
-
-
-		batch.draw(birds[flapState], Gdx.graphics.getWidth() / 2 - birds[flapState].getWidth() / 2, birdY);
-
-		font.draw(batch, String.valueOf(score), 100, 200);
-
-		birdCircle.set(Gdx.graphics.getWidth() / 2, birdY + birds[flapState].getHeight() / 2, birds[flapState].getWidth() / 2);
-
-
-
-		//shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-		//shapeRenderer.setColor(Color.RED);
-		//shapeRenderer.circle(birdCircle.x, birdCircle.y, birdCircle.radius);
-
-		for (int i = 0; i < numberOfTubes; i++) {
-
-			//shapeRenderer.rect(tubeX[i], Gdx.graphics.getHeight() / 2 + gap / 2 + tubeOffset[i], topTube.getWidth(), topTube.getHeight());
-			//shapeRenderer.rect(tubeX[i], Gdx.graphics.getHeight() / 2 - gap / 2 - bottomTube.getHeight() + tubeOffset[i], bottomTube.getWidth(), bottomTube.getHeight());
-
-
-			if (Intersector.overlaps(birdCircle, topTubeRectangles[i]) || Intersector.overlaps(birdCircle, bottomTubeRectangles[i])) {
-
-				gameState = 2;
-
-			}
-
-		}
-
-		batch.end();
-
-		//shapeRenderer.end();
-
-
-
-	}
-	@Override
-	public void resize(int width, int height) {
-	}
-
-	@Override
-	public void show() {
-		// start the playback of the background music
-		// when the screen is shown
-		//rainMusic.play();
-	}
-
-	@Override
-	public void hide() {
-	}
-
-	@Override
-	public void pause() {
-	}
-
-	@Override
-	public void resume() {
-	}
-
-	@Override
-	public void dispose() {
-		//dropSound.dispose();
-		//rainMusic.dispose();
-	}
-
+    final MainGame Gamesession;
+    SpriteBatch group ;
+    Texture ScreenPicture;
+    Texture Endsession ;
+    Texture[] birdPositions ;
+    int flappingstate = 0;
+    float Objectbird = 0;
+    float speedgame = 0;
+    Circle birdreach;
+    int points = 0;
+    int pointsway = 0;
+    BitmapFont Valuefnt;
+    int finalstate = 0;
+    float dropvalue = 2;
+    Texture upperblock;
+    Texture lowerblock;
+    float blockspace = 700;
+    float maxBlockOst;
+    Random rndmvalue;
+    float speedblock = 4;
+    int blockcount = 4;
+    float[] exclsblock = new float[blockcount];
+    float[] blockost = new float[blockcount];
+    float gapReach;
+    Rectangle[] UpperObjects;
+    Rectangle[] LowerObjects;
+    int uploadCount;
+    public FlappyBird(final MainGame maingame) {
+        Gamesession = maingame;
+        
+        String weather = Gamesession.WI.getWeather(31.2304, 121.4737);
+        
+        group = new SpriteBatch();
+        ScreenPicture = new Texture(Gamesession.WI.setBackground(weather));
+        Endsession = new Texture("gameover.png");
+        //shapeRenderer = new ShapeRenderer();
+        birdreach = new Circle();
+        Valuefnt = new BitmapFont();
+        Valuefnt.setColor(Color.WHITE);
+        Valuefnt.getData().setScale(10);
+        birdPositions = new Texture[2];
+        birdPositions[0] = new Texture("bird.png");
+        birdPositions[1] = new Texture("bird1.png");
+        upperblock = new Texture("toptube.png");
+        lowerblock = new Texture("bottomtube.png");
+        maxBlockOst = Gdx.graphics.getHeight() / 2 - blockspace / 2 - 100;
+        rndmvalue = new Random();
+        gapReach = Gdx.graphics.getWidth() * 3 / 4;
+        UpperObjects = new Rectangle[blockcount];
+        LowerObjects = new Rectangle[blockcount];
+        uploadCount = 0;
+        
+        InitializeGame();
+    }
+    public void InitializeGame() {
+        Objectbird = Gdx.graphics.getHeight() / 2 - birdPositions[0].getHeight() / 2;
+        for (int i = 0; i < blockcount; i++) {
+            blockost[i] = (rndmvalue.nextFloat() - 0.5f) * (Gdx.graphics.getHeight() - blockspace - 200);
+            exclsblock[i] = Gdx.graphics.getWidth() / 2 - upperblock.getWidth() / 2 + Gdx.graphics.getWidth() + i * gapReach;
+            UpperObjects[i] = new Rectangle();
+            LowerObjects[i] = new Rectangle();
+        }
+    }
+    @Override
+    public void render (float delta) {
+        group.begin();
+        group.draw(ScreenPicture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        if (finalstate == 1) {
+            if (exclsblock[pointsway] < Gdx.graphics.getWidth() / 2) {
+                points++;
+                Gdx.app.log("Score", String.valueOf(points));
+                if (pointsway < blockcount - 1) {
+                    pointsway++;
+                } else {
+                    pointsway = 0;
+                }
+            }
+            if (Gdx.input.justTouched()) {
+                speedgame = -30;
+            }
+            for (int i = 0; i < blockcount; i++) {
+                if (exclsblock[i] < - upperblock.getWidth()) {
+                    exclsblock[i] += blockcount * gapReach;
+                    blockost[i] = (rndmvalue.nextFloat() - 0.5f) * (Gdx.graphics.getHeight() - blockspace - 200);
+                } else {
+                    exclsblock[i] = exclsblock[i] - speedblock;
+                }
+                group.draw(upperblock, exclsblock[i], Gdx.graphics.getHeight() / 2 + blockspace / 2 + blockost[i]);
+                group.draw(lowerblock, exclsblock[i], Gdx.graphics.getHeight() / 2 - blockspace / 2 - lowerblock.getHeight() + blockost[i]);
+                UpperObjects[i] = new Rectangle(exclsblock[i], Gdx.graphics.getHeight() / 2 + blockspace / 2 + blockost[i], upperblock.getWidth(), upperblock.getHeight());
+                LowerObjects[i] = new Rectangle(exclsblock[i], Gdx.graphics.getHeight() / 2 - blockspace / 2 - lowerblock.getHeight() + blockost[i], lowerblock.getWidth(), lowerblock.getHeight());
+            }
+            if (Objectbird > 0) {
+                speedgame = speedgame + dropvalue;
+                Objectbird -= speedgame;
+            } else {
+                finalstate = 2;
+            }
+        } else if (finalstate == 0) {
+            if (Gdx.input.justTouched()) {
+                finalstate = 1;
+            }
+        } else if (finalstate == 2) {
+            Gamesession.FI.updateData(points, uploadCount);
+            uploadCount = 1;
+            
+            group.draw(Endsession, Gdx.graphics.getWidth() / 2 - Endsession.getWidth() / 2, Gdx.graphics.getHeight() / 2 - Endsession.getHeight() / 2);
+            if (Gdx.input.justTouched()) {
+                Gamesession.setScreen(new MainMenuScreen(Gamesession));
+                dispose();
+            }
+        }
+        if (flappingstate == 0) {
+            flappingstate = 1;
+        } else {
+            flappingstate = 0;
+        }
+        group.draw(birdPositions[flappingstate], Gdx.graphics.getWidth() / 2 - birdPositions[flappingstate].getWidth() / 2, Objectbird);
+        Valuefnt.draw(group, String.valueOf(points), 100, 200);
+        birdreach.set(Gdx.graphics.getWidth() / 2, Objectbird + birdPositions[flappingstate].getHeight() / 2, birdPositions[flappingstate].getWidth() / 2);
+        for (int i = 0; i < blockcount; i++) {
+            if (Intersector.overlaps(birdreach, UpperObjects[i]) || Intersector.overlaps(birdreach, LowerObjects[i])) {
+                finalstate = 2;
+            }
+        }
+        group.end();
+    }
+    @Override
+    public void resize(int width, int height) {
+    }
+    @Override
+    public void show() {
+        // start the playback of the background music
+        // when the screen is shown
+        //rainMusic.play();
+    }
+    @Override
+    public void hide() {
+    }
+    @Override
+    public void pause() {
+    }
+    @Override
+    public void resume() {
+    }
+    @Override
+    public void dispose() {
+        //dropSound.dispose();
+        //rainMusic.dispose();
+    }
 }
-
-
