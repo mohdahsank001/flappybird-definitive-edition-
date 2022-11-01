@@ -52,7 +52,6 @@ public class BluetoothScreen implements Screen{
     Rectangle[] topTubeRectangles;
     Rectangle[] bottomTubeRectangles;
 
-    FirebaseInterface FI;
     int uploadCount;
 
 
@@ -186,7 +185,7 @@ public class BluetoothScreen implements Screen{
 
         } else if (gameState == 2) {
 
-            FI.updateData(score, uploadCount);
+            game.FI.updateData(score, uploadCount);
             uploadCount = 1;
 
             batch.draw(gameover, Gdx.graphics.getWidth() / 2 - gameover.getWidth() / 2, Gdx.graphics.getHeight() / 2 - gameover.getHeight() / 2);
