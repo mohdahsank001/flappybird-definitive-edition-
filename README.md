@@ -31,10 +31,11 @@ Introducing floating tubes- In the new game, tubes are never attached to a surfa
 
 We wanted users to score through the game, so we have introduced a new feature. 
 
-In certain pipe configuration, you will be able to move below or above the tube unlike conventional game setting where tubes are quite often attached to the surface.  
+In certain pipe configuration, you will be able to move below or above the tube,
+unlike conventional game setting where tubes are quite often attached to the surface.  
 
 ```
-<img width="1108" alt="image" src="https://user-images.githubusercontent.com/67852641/199167487-15fa35aa-ee49-44fc-a3d8-73f9462eb620.png">
+<img width="1108" alt="image" src="https://user-images.githubusercontent.com/67852641/199167612-901f4bff-df6a-4af1-a967-4229e391092f.png">
 
 
 
