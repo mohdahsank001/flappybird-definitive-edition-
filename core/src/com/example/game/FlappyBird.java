@@ -50,13 +50,15 @@ public class FlappyBird implements Screen {
 	Rectangle[] topTubeRectangles;
 	Rectangle[] bottomTubeRectangles;
 
-	FirebaseInterface FI;
 	int uploadCount;
 
-	public FlappyBird(final MainGame maingame, FirebaseInterface FI) {
+	public FlappyBird(final MainGame maingame) {
 		game = maingame;
+		
+		String weather = game.WI.getWeather(31.2304, 121.4737);
+		
 		batch = new SpriteBatch();
-		background = new Texture("bg.png");
+		background = new Texture(game.WI.setBackground(weather));
 		gameover = new Texture("gameover.png");
 		//shapeRenderer = new ShapeRenderer();
 		birdCircle = new Circle();
@@ -77,7 +79,6 @@ public class FlappyBird implements Screen {
 		topTubeRectangles = new Rectangle[numberOfTubes];
 		bottomTubeRectangles = new Rectangle[numberOfTubes];
 
-		this.FI = FI;
 		uploadCount = 0;
 		
 		startGame();
@@ -180,7 +181,7 @@ public class FlappyBird implements Screen {
 
 		} else if (gameState == 2) {
 
-			FI.updateData(score, uploadCount);
+			game.FI.updateData(score, uploadCount);
 			uploadCount = 1;
 			
 			batch.draw(gameover, Gdx.graphics.getWidth() / 2 - gameover.getWidth() / 2, Gdx.graphics.getHeight() / 2 - gameover.getHeight() / 2);
@@ -194,7 +195,7 @@ public class FlappyBird implements Screen {
 				scoringTube = 0;
 				velocity = 0;
 				*/
-				game.setScreen(new MainMenuScreen(game, FI));
+				game.setScreen(new MainMenuScreen(game));
 				dispose();
 			}
 
