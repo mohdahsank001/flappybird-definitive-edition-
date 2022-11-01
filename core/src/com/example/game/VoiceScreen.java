@@ -48,15 +48,13 @@ public class VoiceScreen implements Screen {
     Rectangle[] topTubeRectangles;
     Rectangle[] bottomTubeRectangles;
 	
-    FirebaseInterface FI;
-	
     int uploadCount;
 
     double volume = 0;
     final AudioRecorder recorder;
     final short[] samples;
 
-    public VoiceScreen(final MainGame maingame, FirebaseInterface FI) {
+    public VoiceScreen(final MainGame maingame) {
 
         game = maingame;
         batch = new SpriteBatch();
@@ -105,7 +103,6 @@ public class VoiceScreen implements Screen {
             }
         }).start();
 
-	this.FI = FI;
         uploadCount = 0;
 
         startGame();
@@ -214,7 +211,7 @@ public class VoiceScreen implements Screen {
 
         } else if (gameState == 2) {
 
-	    FI.updateData(score, uploadCount);
+	    game.FI.updateData(score, uploadCount);
             uploadCount = 1;
 		
             batch.draw(gameover, Gdx.graphics.getWidth() / 2 - gameover.getWidth() / 2, Gdx.graphics.getHeight() / 2 - gameover.getHeight() / 2);
@@ -229,7 +226,7 @@ public class VoiceScreen implements Screen {
 				velocity = 0;
 				*/
                 recorder.dispose();
-                game.setScreen(new MainMenuScreen(game, FI));
+                game.setScreen(new MainMenuScreen(game));
                 dispose();
             }
 
