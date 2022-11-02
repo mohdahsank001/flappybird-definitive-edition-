@@ -1,9 +1,42 @@
-# flappybird-definitive-edition-
+# flappybird-definitive-edition- 
 definitive edition of the classic flappy bird game developed by team065 at unimelb for COMP90018 Assignment Component.
 
+Update log
+```
+
+10/15/2022
+
+Added Basic Game including physics, mechanics, assets and gameplay
+
+10/30/2022
+
+Added Bluetooth Connectivity feature for an external joystick
+Added Voice control part for flappy bird 
+Added Motion control part for flappy bird 
+Added Start screen and menu screen
+
+11/1/2022
+Added firebase database for cloud based leaderboard
+Added cloud based leaderboard
+Added dynamic weather feature based on user location
 
 
- <img width="176" alt="image" src="https://user-images.githubusercontent.com/67852641/194203134-1e0ff252-7c47-4d62-894e-63d01c65d30a.png">
+11/2/2022
+Final release 
+
+
+Main Game Objective : 
+
+Save Flappy Bird from falling into the fire pit as tubes are connected to the Fire pit. 
+Cool tube graphics with fire added as part of latest release with attention to detail. 
+
+
+
+```
+<img width="176" alt="image" src="https://user-images.githubusercontent.com/67852641/194203134-1e0ff252-7c47-4d62-894e-63d01c65d30a.png">
+<br>
+
+<img width="176" alt="image" src="https://user-images.githubusercontent.com/67852641/199386796-27ac9474-83e1-463d-adf9-77d8e39d1223.png">
 <br>
 
 <img width="835" alt="image" src="https://user-images.githubusercontent.com/67852641/194204911-642b6f13-3dff-4512-818b-0344280a8149.png">
@@ -22,5 +55,21 @@ definitive edition of the classic flappy bird game developed by team065 at unime
 
 <br>
 <img width="1466" alt="image" src="https://user-images.githubusercontent.com/67852641/197109439-0fb3507a-6bd3-4265-963f-090e7c24bd70.png">
+<br>
+<img width="1108" alt="image" src="https://user-images.githubusercontent.com/67852641/199165672-5e19a162-82f3-43c2-83b8-52fdadc7275b.png">
+<br>
+
+```
+Introducing floating tubes- In the new game, tubes are never attached to a surface but rather float in air. 
+
+We wanted users to score through the game, so we have introduced a new feature. 
+
+In certain pipe configuration, you will be able to move below or above the tube,
+unlike conventional game setting where tubes are quite often attached to the surface.  
+
+```
+<img width="1108" alt="image" src="https://user-images.githubusercontent.com/67852641/199167612-901f4bff-df6a-4af1-a967-4229e391092f.png">
+
+
 
 
