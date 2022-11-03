@@ -14,6 +14,8 @@ import java.util.Random;
 
 public class FlappyBird implements Screen {
 
+	// Initialise variables 
+	
 	final MainGame gameSession;
 	SpriteBatch group;
 	Texture ScreenPicture;
@@ -87,6 +89,7 @@ public class FlappyBird implements Screen {
 
 	}
 
+	// start game
 	public void startGame() {
 
 		Objectbird = Gdx.graphics.getHeight() / 2 - birdPositions[0].getHeight() / 2;
@@ -105,6 +108,7 @@ public class FlappyBird implements Screen {
 	}
 
 	@Override
+	// render
 	public void render (float delta) {
 
 		group.begin();
