@@ -7,10 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
@@ -43,6 +40,9 @@ public class MainMenuScreen implements Screen {
         img.setWidth(Gdx.graphics.getWidth());
         img.setHeight(Gdx.graphics.getHeight());
 
+
+        // Set up the 'Normal' game button
+        // Create a normal game after being clicked.
         upTextures[0] = new Texture(Gdx.files.internal("button_normal.png"));
         Button.ButtonStyle style_n = new Button.ButtonStyle();
         style_n.up = new TextureRegionDrawable(new TextureRegion(upTextures[0]));
@@ -59,6 +59,8 @@ public class MainMenuScreen implements Screen {
             }
         });
 
+        // Set up the 'Motion' game button
+        // Create a motion tilt controlled game after being clicked.
         upTextures[1] = new Texture(Gdx.files.internal("button_motion.png"));
         Button.ButtonStyle style_m = new Button.ButtonStyle();
         style_m.up = new TextureRegionDrawable(new TextureRegion(upTextures[1]));
@@ -75,6 +77,8 @@ public class MainMenuScreen implements Screen {
             }
         });
 
+        // Set up the 'Voice' game button
+        // Create a voice controlled game after being clicked.
         upTextures[2] = new Texture(Gdx.files.internal("button_voice.png"));
         Button.ButtonStyle style_v = new Button.ButtonStyle();
         style_v.up = new TextureRegionDrawable(new TextureRegion(upTextures[2]));
@@ -92,7 +96,8 @@ public class MainMenuScreen implements Screen {
             }
         });
 
-
+        // Set up the 'bluetooth' game button
+        // Displaying different button image based on the bluetooth connection status.
         if (gameSession.bluetoothStatus == 1) {
             upTextures[3] = new Texture(Gdx.files.internal("button_bluetooth.png"));
         }
@@ -107,6 +112,7 @@ public class MainMenuScreen implements Screen {
         buttons[3].setWidth(500);
         buttons[3].setHeight(250);
 
+        // Different handling of situations whether a bluetooth controller is connected.
         if (gameSession.bluetoothStatus == 1) {
             buttons[3].addListener(new ClickListener() {
                 @Override
@@ -138,6 +144,8 @@ public class MainMenuScreen implements Screen {
             });
         }
 
+        // Set up the 'quit' button
+        // Quit the game after being clicked.
         upTextures[4] = new Texture(Gdx.files.internal("button_quit.png"));
         Button.ButtonStyle style_q = new Button.ButtonStyle();
         style_q.up = new TextureRegionDrawable(new TextureRegion(upTextures[4]));
@@ -154,6 +162,8 @@ public class MainMenuScreen implements Screen {
             }
         });
 
+        // Set up the 'leaderboard' button
+        // Generate the leaderboard screen after being clicked.
         upTextures[5] = new Texture(Gdx.files.internal("score.png"));
         Button.ButtonStyle style_s = new Button.ButtonStyle();
         style_s.up = new TextureRegionDrawable(new TextureRegion(upTextures[5]));
@@ -206,6 +216,7 @@ public class MainMenuScreen implements Screen {
 
         stage.draw();
 
+        // Constanl getting the current location of the device in latitude and longitude.
         gameSession.LLI.getLastLocation();
 
     }

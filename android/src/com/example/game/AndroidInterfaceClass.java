@@ -20,11 +20,15 @@ public class AndroidInterfaceClass implements FirebaseInterface{
     public Map<String, Object> current_leaderboard = new HashMap<>();
     private static final String TAG = "AndroidInterfaceClass";
 
+    // Create the firebase cloud database connection, specifying collection and document names.
     public AndroidInterfaceClass(){
         db = FirebaseFirestore.getInstance();
         docRef = db.collection("Leaderboard");
     }
 
+    // This function reads the data from the cloud database
+    // and store the leaderboard data into variable current_leaderboard.
+    // Log the error otherwise.
     @Override
     public void readData() {
         docRef
@@ -44,6 +48,10 @@ public class AndroidInterfaceClass implements FirebaseInterface{
                 });
     }
 
+    // This function updates the data
+    // uploading the score to the database
+    // while using logic to maintain the order of the leaderboard.
+    // Log the error otherwise.
     @Override
     public void updateData(int score, int alreadyUpdated) {
         if (alreadyUpdated == 1){
@@ -81,6 +89,7 @@ public class AndroidInterfaceClass implements FirebaseInterface{
                 });
     }
 
+    // Getter function for other module.
     @Override
     public Map<String, Object> transferData() {
         return current_leaderboard;

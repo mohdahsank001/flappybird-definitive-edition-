@@ -1,21 +1,13 @@
 package com.example.game;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
-import android.content.Intent;
 import android.view.InputDevice;
 import android.view.KeyEvent;
-import android.content.Context;
-import android.widget.Toast;
-
-
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.core.app.ActivityCompat;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;

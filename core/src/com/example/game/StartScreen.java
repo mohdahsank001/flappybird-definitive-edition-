@@ -14,6 +14,7 @@ public class StartScreen implements Screen {
 
         gameSession = maingame;
 
+        // Get the current location of the device in latitude and longitude.
         gameSession.LLI.getLastLocation();
 
         camera = new OrthographicCamera();
@@ -27,11 +28,13 @@ public class StartScreen implements Screen {
         camera.update();
         gameSession.batch.setProjectionMatrix(camera.combined);
 
+        // Print the welcome message.
         gameSession.batch.begin();
         gameSession.font.draw(gameSession.batch, "Welcome to Flappy Bird", 160, 320);
         gameSession.font.draw(gameSession.batch, "Tap anywhere to begin", 180, 230);
         gameSession.batch.end();
 
+        // If touched again, enter the  main menu screen.
         if (Gdx.input.isTouched()) {
             gameSession.setScreen(new MainMenuScreen(gameSession));
             dispose();

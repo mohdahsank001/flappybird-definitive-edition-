@@ -23,32 +23,34 @@ public class MotionScreen implements Screen{
     Texture Endsession;
 
     Texture[] birdPositions;
+    Circle birdreach;
     int flappingstate = 0;
     float Objectbird = 0;
+
     float speedgame = 0;
-    Circle birdreach;
     int points = 0;
     int pointsway = 0;
     BitmapFont Valuefnt;
-
-    int finalstate = 0;
     float dropvalue = 2;
+    int finalstate = 0;
 
     Texture upperblock;
     Texture lowerblock;
+    Random rndmvalue;
+
     float blockspace = 700;
     float maxBlockOst;
-    Random rndmvalue;
     float speedblock = 4;
     int blockcount = 4;
     float[] exclsblock = new float[blockcount];
     float[] blockost = new float[blockcount];
     float gapReach;
+
+    int uploadCount;
+
     Rectangle[] UpperObjects;
     Rectangle[] LowerObjects;
 
-    int uploadCount;
-	
     float up;
     float down;
 
@@ -56,13 +58,13 @@ public class MotionScreen implements Screen{
 
         gameSession = maingame;
 
+        // Get the current location of the device in latitude and longitude.
         gameSession.LLI.getLastLocation();
 
+        // Gets the weather data from weather API.
         String weather = gameSession.WI.getWeather(gameSession.LLI.getLatitude(), gameSession.LLI.getLongitude());
 
-        System.out.println("THE latitude finally is " + gameSession.LLI.getLatitude());
-        System.out.println("THE longitude finally is " + gameSession.LLI.getLongitude());
-
+        // Initialize all variables.
         group = new SpriteBatch();
         ScreenPicture = new Texture(gameSession.WI.setBackground(weather));
         Endsession = new Texture("gameover.png");
@@ -75,7 +77,6 @@ public class MotionScreen implements Screen{
         birdPositions = new Texture[2];
         birdPositions[0] = new Texture("bird.png");
         birdPositions[1] = new Texture("bird1.png");
-
 
         upperblock = new Texture("toptube.png");
         lowerblock = new Texture("bottomtube.png");
@@ -104,7 +105,6 @@ public class MotionScreen implements Screen{
             LowerObjects[i] = new Rectangle();
 
         }
-
     }
 
     @Override
@@ -120,10 +120,12 @@ public class MotionScreen implements Screen{
         up = abs(Gdx.input.getGyroscopeZ()) * 50 * Gdx.graphics.getDeltaTime();
         down = abs(Gdx.input.getAccelerometerZ()) * 10 * Gdx.graphics.getDeltaTime();
 
+        // If the game is running.
         if (finalstate == 1) {
 
             if (exclsblock[pointsway] < Gdx.graphics.getWidth() / 2) {
 
+                // Score points
                 points++;
 
                 Gdx.app.log("Score", String.valueOf(points));
@@ -137,7 +139,6 @@ public class MotionScreen implements Screen{
                     pointsway = 0;
 
                 }
-
             }
 
             if (up > 0 || down > 0) {
@@ -161,8 +162,6 @@ public class MotionScreen implements Screen{
 
                     exclsblock[i] = exclsblock[i] - speedblock;
 
-
-
                 }
 
                 group.draw(upperblock, exclsblock[i], Gdx.graphics.getHeight() / 2 + blockspace / 2 + blockost[i]);
@@ -171,8 +170,6 @@ public class MotionScreen implements Screen{
                 UpperObjects[i] = new Rectangle(exclsblock[i], Gdx.graphics.getHeight() / 2 + blockspace / 2 + blockost[i], upperblock.getWidth(), upperblock.getHeight());
                 LowerObjects[i] = new Rectangle(exclsblock[i], Gdx.graphics.getHeight() / 2 - blockspace / 2 - lowerblock.getHeight() + blockost[i], lowerblock.getWidth(), lowerblock.getHeight());
             }
-
-
 
             if (Objectbird > 0) {
 
@@ -185,6 +182,7 @@ public class MotionScreen implements Screen{
 
             }
 
+            // if the game is not started.
         } else if (finalstate == 0) {
 
             if (up > 0 || down > 0) {
@@ -193,26 +191,23 @@ public class MotionScreen implements Screen{
 
             }
 
+            // if it's gameover
         } else if (finalstate == 2) {
-		
+
+            // Update the score if the game has not updated.
 	        gameSession.FI.updateData(points, uploadCount);
+
+            // Change the status to 'updated'
             uploadCount = 1;
 
+            // Draw the gameover texture.
             group.draw(Endsession, Gdx.graphics.getWidth() / 2 - Endsession.getWidth() / 2, Gdx.graphics.getHeight() / 2 - Endsession.getHeight() / 2);
 
+            // Goes back to main menu screen if the screen is touched again.
             if (Gdx.input.justTouched()) {
-
-				/*
-				finalstate = 1;
-				startGame();
-				points = 0;
-				pointsway = 0;
-				speedgame = 0;
-				*/
                 gameSession.setScreen(new MainMenuScreen(gameSession));
                 dispose();
             }
-
         }
 
         if (flappingstate == 0) {
@@ -221,28 +216,20 @@ public class MotionScreen implements Screen{
             flappingstate = 0;
         }
 
-
-
         group.draw(birdPositions[flappingstate], Gdx.graphics.getWidth() / 2 - birdPositions[flappingstate].getWidth() / 2, Objectbird);
 
         Valuefnt.draw(group, String.valueOf(points), 100, 200);
 
         birdreach.set(Gdx.graphics.getWidth() / 2, Objectbird + birdPositions[flappingstate].getHeight() / 2, birdPositions[flappingstate].getWidth() / 2);
 
-
         for (int i = 0; i < blockcount; i++) {
-
             if (Intersector.overlaps(birdreach, UpperObjects[i]) || Intersector.overlaps(birdreach, LowerObjects[i])) {
 
                 finalstate = 2;
 
             }
-
         }
-
         group.end();
-
-
     }
 
     @Override

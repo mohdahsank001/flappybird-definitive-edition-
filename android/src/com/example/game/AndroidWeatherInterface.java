@@ -1,19 +1,16 @@
 package com.example.game;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.github.prominence.openweathermap.api.OpenWeatherMapClient;
 import com.github.prominence.openweathermap.api.enums.Language;
 import com.github.prominence.openweathermap.api.enums.UnitSystem;
 import com.github.prominence.openweathermap.api.model.Coordinate;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AndroidWeatherInterface implements WeatherInterface {
 
     private String api_key;
-    private String url;
 
     private String result;
 
@@ -21,26 +18,31 @@ public class AndroidWeatherInterface implements WeatherInterface {
         api_key = "e303d65848bb20ffb2e6fe228921815f";
     }
 
+
+    // This function gets the weather using the OpenWeatherMap api along with location information
+    //  Latitude and Longitude
     @Override
     public String getWeather(double lat, double lon) {
 
         int weather_id = 0;
 
+        // Retrieve weather API result.
         OpenWeatherMapClient openWeatherClient = new OpenWeatherMapClient(api_key);
         result = openWeatherClient.currentWeather().single().byCoordinate(Coordinate.of(lat, lon))
                 .language(Language.ENGLISH).unitSystem(UnitSystem.STANDARD).retrieve().asJSON();
 
-        System.out.println(result);
-
         JSONObject root = null;
         try {
             root = new JSONObject(result);
-            JSONObject jsonarray = root.getJSONArray("weather").getJSONObject(0);
-            weather_id = jsonarray.getInt("id");
+            JSONObject jsonObject = root.getJSONArray("weather").getJSONObject(0);
+            weather_id = jsonObject.getInt("id");
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
+        // Use the unique weather id to determine the actual weather.
+        // e.g. id 802 is scattered clouds, considered as clouds.
+        // e.g. id 500 is light rain and is considered as rains.
         if (weather_id > 200 && weather_id < 600){
             return "rain";
         }
@@ -56,6 +58,7 @@ public class AndroidWeatherInterface implements WeatherInterface {
         return "normal";
     }
 
+    // Tell the game which background to render by returning the background image file name.
     public String setBackground(String weather){
         switch (weather){
             case "rain":
@@ -70,5 +73,4 @@ public class AndroidWeatherInterface implements WeatherInterface {
                 return "bg.png";
         }
     }
-
 }

@@ -1,16 +1,11 @@
 package com.example.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
@@ -22,50 +17,49 @@ public class BluetoothScreen implements Screen{
     final MainGame gameSession;
     SpriteBatch group;
     Texture ScreenPicture;
-    //ShapeRenderer shapeRenderer;
 
     Texture Endsession;
 
     Texture[] birdPositions;
+    Circle birdreach;
     int flappingstate = 0;
     float Objectbird = 0;
+
     float speedgame = 0;
-    Circle birdreach;
     int points = 0;
     int pointsway = 0;
     BitmapFont Valuefnt;
-
-    int finalstate = 0;
     float dropvalue = 2;
+    int finalstate = 0;
 
     Texture upperblock;
     Texture lowerblock;
+    Random rndmvalue;
     Texture gamepad;
+
     float blockspace = 700;
     float maxBlockOst;
-    Random rndmvalue;
     float speedblock = 4;
     int blockcount = 4;
     float[] exclsblock = new float[blockcount];
     float[] blockost = new float[blockcount];
     float gapReach;
-    Rectangle[] UpperObjects;
-    Rectangle[] LowerObjects;
 
     int uploadCount;
 
+    Rectangle[] UpperObjects;
+    Rectangle[] LowerObjects;
 
     public BluetoothScreen(final MainGame maingame) {
         gameSession = maingame;
 
+        // Get the current location of the device in latitude and longitude.
         gameSession.LLI.getLastLocation();
 
+        // Gets the weather data from weather API.
         String weather = gameSession.WI.getWeather(gameSession.LLI.getLatitude(), gameSession.LLI.getLongitude());
 
-        System.out.println("THE latitude finally is " + gameSession.LLI.getLatitude());
-        System.out.println("THE longitude finally is " + gameSession.LLI.getLongitude());
-
-
+        // Initialize all variables.
         group = new SpriteBatch();
         ScreenPicture = new Texture(gameSession.WI.setBackground(weather));
         Endsession = new Texture("gameover.png");
@@ -92,9 +86,6 @@ public class BluetoothScreen implements Screen{
         uploadCount = 0;
 
         startGame();
-
-
-
     }
 
     public void startGame() {
@@ -111,7 +102,6 @@ public class BluetoothScreen implements Screen{
             LowerObjects[i] = new Rectangle();
 
         }
-
     }
 
     @Override
@@ -120,10 +110,12 @@ public class BluetoothScreen implements Screen{
         group.begin();
         group.draw(ScreenPicture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
+        // If the game is running.
         if (finalstate == 1) {
-
+            // the
             if (exclsblock[pointsway] < Gdx.graphics.getWidth() / 2) {
 
+                // Score points
                 points++;
 
                 Gdx.app.log("Score", String.valueOf(points));
@@ -139,7 +131,6 @@ public class BluetoothScreen implements Screen{
                 }
 
             }
-
             if (gameSession.buttonOn == true) {
 
                 speedgame = -30;
@@ -161,15 +152,12 @@ public class BluetoothScreen implements Screen{
 
 
                 }
-
                 group.draw(upperblock, exclsblock[i], Gdx.graphics.getHeight() / 2 + blockspace / 2 + blockost[i]);
                 group.draw(lowerblock, exclsblock[i], Gdx.graphics.getHeight() / 2 - blockspace / 2 - lowerblock.getHeight() + blockost[i]);
 
                 UpperObjects[i] = new Rectangle(exclsblock[i], Gdx.graphics.getHeight() / 2 + blockspace / 2 + blockost[i], upperblock.getWidth(), upperblock.getHeight());
                 LowerObjects[i] = new Rectangle(exclsblock[i], Gdx.graphics.getHeight() / 2 - blockspace / 2 - lowerblock.getHeight() + blockost[i], lowerblock.getWidth(), lowerblock.getHeight());
             }
-
-
 
             if (Objectbird > 0) {
 
@@ -182,6 +170,7 @@ public class BluetoothScreen implements Screen{
 
             }
 
+            // if the game is not started.
         } else if (finalstate == 0) {
 
             if (gameSession.buttonOn == true) {
@@ -191,27 +180,24 @@ public class BluetoothScreen implements Screen{
 
             }
 
+            // if it's gameover
         } else if (finalstate == 2) {
 
+            // Update the score if the game has not updated.
             gameSession.FI.updateData(points, uploadCount);
+
+            // Change the status to 'updated'
             uploadCount = 1;
 
+            // Draw the gameover texture.
             group.draw(Endsession, Gdx.graphics.getWidth() / 2 - Endsession.getWidth() / 2, Gdx.graphics.getHeight() / 2 - Endsession.getHeight() / 2);
 
+            // Goes back to main menu screen if the screen is touched again.
             if (gameSession.buttonOn == true) {
-
-				/*
-				finalstate = 1;
-				startGame();
-				points = 0;
-				pointsway = 0;
-				speedgame = 0;
-				*/
                 gameSession.setScreen(new MainMenuScreen(gameSession));
                 gameSession.buttonOn = false;
                 dispose();
             }
-
         }
 
         if (flappingstate == 0) {
@@ -220,8 +206,6 @@ public class BluetoothScreen implements Screen{
             flappingstate = 0;
         }
 
-
-
         group.draw(birdPositions[flappingstate], Gdx.graphics.getWidth() / 2 - birdPositions[flappingstate].getWidth() / 2, Objectbird);
         group.draw(gamepad, Gdx.graphics.getWidth() - 200, 70);
         Valuefnt.draw(group, String.valueOf(points), 100, 200);
@@ -229,32 +213,15 @@ public class BluetoothScreen implements Screen{
 
         birdreach.set(Gdx.graphics.getWidth() / 2, Objectbird + birdPositions[flappingstate].getHeight() / 2, birdPositions[flappingstate].getWidth() / 2);
 
-
-
-        //shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        //shapeRenderer.setColor(Color.RED);
-        //shapeRenderer.circle(birdreach.x, birdreach.y, birdreach.radius);
-
         for (int i = 0; i < blockcount; i++) {
-
-            //shapeRenderer.rect(exclsblock[i], Gdx.graphics.getHeight() / 2 + blockspace / 2 + blockost[i], upperblock.getWidth(), upperblock.getHeight());
-            //shapeRenderer.rect(exclsblock[i], Gdx.graphics.getHeight() / 2 - blockspace / 2 - lowerblock.getHeight() + blockost[i], lowerblock.getWidth(), lowerblock.getHeight());
-
 
             if (Intersector.overlaps(birdreach, UpperObjects[i]) || Intersector.overlaps(birdreach, LowerObjects[i])) {
 
                 finalstate = 2;
 
             }
-
         }
-
         group.end();
-
-        //shapeRenderer.end();
-
-
-
     }
 
     public void bluetoothPress() {
@@ -279,9 +246,6 @@ public class BluetoothScreen implements Screen{
 
     @Override
     public void show() {
-        // start the playback of the background music
-        // when the screen is shown
-        //rainMusic.play();
     }
 
     @Override
@@ -298,7 +262,5 @@ public class BluetoothScreen implements Screen{
 
     @Override
     public void dispose() {
-        //dropSound.dispose();
-        //rainMusic.dispose();
     }
 }

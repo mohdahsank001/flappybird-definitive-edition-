@@ -7,7 +7,6 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.os.SystemClock;
 import android.view.InputDevice;
 import android.widget.Toast;
 
@@ -23,6 +22,7 @@ public class AndroidInterfaceBluetoothClass implements BluetoothInterface{
 
     @Override
     public void bluetoothUnavailableHandler() {
+
         context.runOnUiThread(new Runnable() {
             @TargetApi(Build.VERSION_CODES.M)
             @Override
@@ -99,5 +99,4 @@ public class AndroidInterfaceBluetoothClass implements BluetoothInterface{
         }
         return gameControllerDeviceIds;
     }
-
 }

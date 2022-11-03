@@ -3,7 +3,6 @@ package com.example.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
@@ -30,6 +29,7 @@ public class LeaderboardScreen implements Screen {
 
         Gdx.input.setInputProcessor(stage);
 
+        // Set up background.
         ScreenPicture = new Texture("menu_bg.png");
         img = new Image(ScreenPicture);
 
@@ -38,6 +38,7 @@ public class LeaderboardScreen implements Screen {
         img.setWidth(Gdx.graphics.getWidth());
         img.setHeight(Gdx.graphics.getHeight());
 
+        // When the leaderboard screen is  created, read the data from the firebase cloud database.
         gameSession.FI.readData();
         leaderboard = gameSession.FI.transferData();
 
@@ -50,6 +51,7 @@ public class LeaderboardScreen implements Screen {
         stage.draw();
         gameSession.batch.draw(ScreenPicture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
+        // Set up the leaderboard display.
         gameSession.font.draw(gameSession.batch, "Rank 1", 160, 1300);
         gameSession.font.draw(gameSession.batch, String.valueOf(leaderboard.get("1")), 800, 1300);
         gameSession.font.draw(gameSession.batch, "Rank 2", 160, 1100);
@@ -62,14 +64,8 @@ public class LeaderboardScreen implements Screen {
         gameSession.font.draw(gameSession.batch, String.valueOf(leaderboard.get("5")), 800, 500);
         gameSession.batch.end();
 
+        // Goes back to the main menu screen if touched again.
         if (Gdx.input.justTouched()) {
-				/*
-				gameState = 1;
-				startGame();
-				score = 0;
-				scoringTube = 0;
-				velocity = 0;
-				*/
             gameSession.setScreen(new MainMenuScreen(gameSession));
             dispose();
         }
