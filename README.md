@@ -9,32 +9,27 @@ Group No: T01/06-5
 
 Group Members:
 
-1: [ZHENXIANG, zhenxiang@student.unimelb.edu.au]
-2: [YAXY, yaxy@student.unimelb.edu.au] 
-3: [MKOLLATHODI, mkollathodi@student.unimelb.edu.au] 
-4: [Vaibhavik, Vaibhavik@student.unimelb.edu.au] 
-5: [yikey1, yikey1@student.unimelb.edu.au] 
+1: [ZHENXIANG, zhenxiang@student.unimelb.edu.au]<br>
+2: [YAXY, yaxy@student.unimelb.edu.au] <br>
+3: [MKOLLATHODI, mkollathodi@student.unimelb.edu.au]<br>
+4: [Vaibhavik, Vaibhavik@student.unimelb.edu.au]<br>
+5: [yikey1, yikey1@student.unimelb.edu.au]<br>
  
 
-YouTube Link: https://youtu.be/r_RzLIcNdj8 
+YouTube Link: https://youtu.be/r_RzLIcNdj8 <br>
 
 Publicity statement: We authorise the University of Melbourne to use material from our submission for publicity.
 
-README:
-
-Please include details on how to compile and run your APP.
-
-
 Instructions to compile and run APP on your local Environment : 
 
-1. Clone the repo to get the code file, Open the 'code' folder as part of the zip file submission named 'COMP90018 - Assignment 2 - Group 06-5.zip'.
-2. Inside the 'code' folder you will be able to find the project code folder named 'flappybird-definitive-edition-'. '
-3. As a pre-requisite you need to have Android studio Application installed in your local environment.
-4. Additionally, you will also need to successfully setup the Run/Debug configuration, SDK (preferably latest version) and a running emulator with an android virtual device as part of the Android studio application.
-5. Open the 'flappybird-definitive-edition-' project by accessing your android studio application File Menu and clicking on the open option.
-6. Once you open the project on Android studio, wait for a while for the Gradle sync to complete. 
-7. Once the Gradle sync is successfully complete, run the configuration from the Run menu or by clicking on the Run configuration button from the Run tool window. 
-8. Once the application is successfully installed on your android virtual device (AVD), and as the application starts tap anywhere on the screen of the android virtual device to begin the game.
+1. Clone the repo to get the code file, Open the 'code' folder as part of the zip file submission named 'COMP90018 - Assignment 2 - Group 06-5.zip'.<br>
+2. Inside the 'code' folder you will be able to find the project code folder named 'flappybird-definitive-edition-'. '<br>
+3. As a pre-requisite you need to have Android studio Application installed in your local environment.<br>
+4. Additionally, you will also need to successfully setup the Run/Debug configuration, SDK (preferably latest version) and a running emulator with an android virtual device as part of the Android studio application.<br>
+5. Open the 'flappybird-definitive-edition-' project by accessing your android studio application File Menu and clicking on the open option.<br>
+6. Once you open the project on Android studio, wait for a while for the Gradle sync to complete.<br>
+7. Once the Gradle sync is successfully complete, run the configuration from the Run menu or by clicking on the Run configuration button from the Run tool window.<br> 
+8. Once the application is successfully installed on your android virtual device (AVD), and as the application starts tap anywhere on the screen of the android virtual device to begin the game.<br>
 
 
 Update log
