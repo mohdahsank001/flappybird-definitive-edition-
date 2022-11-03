@@ -16,10 +16,13 @@ public class AndroidInterfaceBluetoothClass implements BluetoothInterface{
 
     private Activity context;
 
+    // Pass the Activity in AndroidLauncher to this Class
     public AndroidInterfaceBluetoothClass(Activity context) {
         this.context = context;
     }
 
+    // When the bluetooth button is disabled and user click on the button, the system will
+    // check the bluetooth availability and connection with controllers, then perform accordingly
     @Override
     public void bluetoothUnavailableHandler() {
 
@@ -36,15 +39,19 @@ public class AndroidInterfaceBluetoothClass implements BluetoothInterface{
                         if (getGameControllerIds().isEmpty()) {
                             Toast.makeText(context.getApplicationContext(), "No controller found", Toast.LENGTH_SHORT).show();
                         }
+                        // This function will do nothing if a controller is connected
                         else {
                             return;
                         }
                     }
                     else {
+                        // Request bluetooth permission if the permission is not granted
                         if (context.checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
                             context.requestPermissions(new String[] {Manifest.permission.BLUETOOTH_CONNECT},1);
                             return;
                         }
+                        // Ask for turning on the bluetooth if the bluetooth permission is granted
+                        // and the bluetooth is off
                         else {
                             Intent i = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                             context.startActivityForResult(i, intVal);
@@ -55,6 +62,7 @@ public class AndroidInterfaceBluetoothClass implements BluetoothInterface{
         });
     }
 
+    // Check if a controller is successfully connected
     @Override
     public boolean isControllerAvailable() {
         if (!getGameControllerIds().isEmpty()) {
@@ -63,6 +71,7 @@ public class AndroidInterfaceBluetoothClass implements BluetoothInterface{
         return false;
     }
 
+    // Show the message when a controller is connected and user press the bluetooth button
     @Override
     public void bluetoothAvailableMsg() {
         context.runOnUiThread(new Runnable() {
@@ -73,6 +82,7 @@ public class AndroidInterfaceBluetoothClass implements BluetoothInterface{
         });
     }
 
+    // Show the message when bluetooth is on, no controller connected and user press the bluetooth button
     @Override
     public void bluetoothUnavailableMsg() {
         context.runOnUiThread(new Runnable() {
@@ -83,6 +93,8 @@ public class AndroidInterfaceBluetoothClass implements BluetoothInterface{
         });
     }
 
+    // Scan all connected devices, determines if they are supported game controllers
+    // and finally return the number of them
     public ArrayList<Integer> getGameControllerIds() {
         ArrayList<Integer> gameControllerDeviceIds = new ArrayList<Integer>();
         int[] deviceIds = InputDevice.getDeviceIds();

@@ -117,9 +117,12 @@ public class MainMenuScreen implements Screen {
             buttons[3].addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
+                    // Redirect the screen to the bluetooth game screen if a controller is connected
                     if (gameSession.BI.isControllerAvailable()) {
                         gameSession.setScreen(new BluetoothScreen(gameSession));
                     }
+                    // Update the status of bluetooth in gameSession when there is no
+                    // controller connected anymore
                     else {
                         gameSession.BI.bluetoothUnavailableMsg();
                         gameSession.bluetoothStatus = 3;
@@ -134,6 +137,7 @@ public class MainMenuScreen implements Screen {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     gameSession.BI.bluetoothUnavailableHandler();
+                    // Enable the bluetooth button if a controller is connected
                     if (gameSession.BI.isControllerAvailable()) {
                         gameSession.BI.bluetoothAvailableMsg();
                         gameSession.bluetoothStatus = 1;

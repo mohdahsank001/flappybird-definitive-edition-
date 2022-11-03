@@ -42,26 +42,33 @@ public class AndroidLauncher extends AndroidApplication {
 		initialize(MG, config);
 	}
 
+	// Check current bluetooth status and set the blueToothStatus in MainGame
 	@TargetApi(Build.VERSION_CODES.M)
 	public void checkBluetooth() {
 		if (BA == null) {
-			MG.setBluetoothStatus(0); //Bluetooth Unavailable
+			//Bluetooth Unavailable
+			MG.setBluetoothStatus(0);
 		}
 		else {
 			if (BA.isEnabled()) {
 				if (!getGameControllerIds().isEmpty()) {
-					MG.setBluetoothStatus(1); //Bluetooth On Connected
+					//Bluetooth On and Connected
+					MG.setBluetoothStatus(1);
 				}
 				else {
-					MG.setBluetoothStatus(2); //Bluetooth On Unconnected
+					//Bluetooth On and Unconnected
+					MG.setBluetoothStatus(2);
 				}
 			}
 			else {
-				MG.setBluetoothStatus(3); //Bluetooth Off
+				//Bluetooth Off
+				MG.setBluetoothStatus(3);
 			}
 		}
 	}
 
+	// Scan all connected devices, determines if they are supported game controllers
+	// and finally return the number of them
 	public ArrayList<Integer> getGameControllerIds() {
 		ArrayList<Integer> gameControllerDeviceIds = new ArrayList<Integer>();
 		int[] deviceIds = InputDevice.getDeviceIds();
@@ -79,6 +86,8 @@ public class AndroidLauncher extends AndroidApplication {
 		return gameControllerDeviceIds;
 	}
 
+	// Detect any input of controllers, when the input equals Button A or DPad Center
+	// it will return true and call the function bluetoothPress() in MainGame
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		boolean handled = false;

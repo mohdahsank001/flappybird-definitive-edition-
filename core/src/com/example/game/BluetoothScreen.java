@@ -134,6 +134,7 @@ public class BluetoothScreen implements Screen{
             if (gameSession.buttonOn == true) {
 
                 speedgame = -30;
+                // Set the button pressed state to false
                 gameSession.buttonOn = false;
 
             }
@@ -176,6 +177,7 @@ public class BluetoothScreen implements Screen{
             if (gameSession.buttonOn == true) {
 
                 finalstate = 1;
+                // Set the button pressed state to false
                 gameSession.buttonOn = false;
 
             }
@@ -195,6 +197,7 @@ public class BluetoothScreen implements Screen{
             // Goes back to main menu screen if the screen is touched again.
             if (gameSession.buttonOn == true) {
                 gameSession.setScreen(new MainMenuScreen(gameSession));
+                // Set the button pressed state to false
                 gameSession.buttonOn = false;
                 dispose();
             }
@@ -222,22 +225,6 @@ public class BluetoothScreen implements Screen{
             }
         }
         group.end();
-    }
-
-    public void bluetoothPress() {
-        if (finalstate == 0) {
-            finalstate = 1;
-        }
-        else if (finalstate == 1) {
-            speedgame = -30;
-        }
-        else if (finalstate == 2) {
-            finalstate = 1;
-            startGame();
-            points = 0;
-            pointsway = 0;
-            speedgame = 0;
-        }
     }
 
     @Override
