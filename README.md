@@ -1,6 +1,6 @@
 # flappybird-definitive-edition- 
 
-Definitive edition of the classic flappy bird game developed by team065 at unimelb for COMP90018 Assignment Component.A Game directed by Mohammed Ahsan Kollathodi.       
+Definitive edition of the classic flappy bird game developed by team065 at unimelb for COMP90018 Assignment Component.Concept and Game directed by Mohammed Ahsan Kollathodi.       
                     
 
 Development team at the University of Melbourne :
