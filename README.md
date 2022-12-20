@@ -3,13 +3,13 @@
 Definitive edition of the classic flappy bird game developed by team065 at unimelb for COMP90018 Assignment Component.A Game directed by Mohammed Ahsan Kollathodi.       
                     
 
-Development team :
+Development team at the University of Melbourne :
 
-1: [ZHENXIANG, zhenxiang@student.unimelb.edu.au]<br>
-2: [YAXY, yaxy@student.unimelb.edu.au] <br>
-3: [MKOLLATHODI, mkollathodi@student.unimelb.edu.au]<br>
-4: [Vaibhavik, Vaibhavik@student.unimelb.edu.au]<br>
-5: [yikey1, yikey1@student.unimelb.edu.au]<br>
+1: [ZHENXIANG WENG, zhenxiang@student.unimelb.edu.au]<br>
+2: [XIN YANG, yaxy@student.unimelb.edu.au] <br>
+3: [MOHAMMED AHSAN KOLLATHODI, mkollathodi@student.unimelb.edu.au]<br>
+4: [VAIBHAVI KULKARNI , Vaibhavik@student.unimelb.edu.au]<br>
+5: [YIKE YU, yikey1@student.unimelb.edu.au]<br>
  
 
 YouTube Link: https://youtu.be/r_RzLIcNdj8 <br>
