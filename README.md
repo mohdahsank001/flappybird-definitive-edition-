@@ -1,13 +1,9 @@
 # flappybird-definitive-edition- 
-Definitive edition of the classic flappy bird game developed by team065 at unimelb for COMP90018 Assignment Component.
 
-################################################################################                     
-                    COMP90018 Programming Project Submission
-################################################################################
+Definitive edition of the classic flappy bird game developed by team065 at unimelb for COMP90018 Assignment Component.A Game directed by Mohammed Ahsan Kollathodi.       
+                    
 
-Group No: T01/06-5
-
-Group Members:
+Development team :
 
 1: [ZHENXIANG, zhenxiang@student.unimelb.edu.au]<br>
 2: [YAXY, yaxy@student.unimelb.edu.au] <br>
